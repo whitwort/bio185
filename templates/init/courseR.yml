@@ -1,6 +1,9 @@
 # Paths relative to the current working directory where build() expects to find things
 paths:
   
+  # root project path
+  project: {{path}}
+  
   # link content/assignments to data files with the `data: ` header.  Students 
   # get local copies of data files when they start assignments.
   data: data

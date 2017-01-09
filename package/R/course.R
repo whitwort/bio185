@@ -49,4 +49,4 @@ submitAssignment <- function(name, path = getwd()) {
 #' @export
 checkAssignments <- function(path = getwd()) {
   courseR::checkAssignments(path = path, pkg = system.file(package = "bio185"))
-} 
+}  

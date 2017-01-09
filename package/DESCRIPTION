@@ -10,4 +10,4 @@ Description: What the package does (one paragraph).
 Imports: courseR
 Depends: R (>= 3.3.2)
 License: GPL-3
-RoxygenNote: 5.0.1 
+RoxygenNote: 5.0.1  
