@@ -1,12 +1,79 @@
 ---
-title:  bio185
+title:  Welcome to Data Science!
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Welcome to the course website for **Biol-185**:  [Data Science](https://en.wikipedia.org/wiki/Data_science): *visualizing and exploring Big Data*.  This is where you will find tutorial pages, assignments, the class schedule and grading information *in lieu* of a traditional syllabus.
+
+Over the course of the term I hope that you start to feel like a [coding ninja](http://code-ninja.co/), forget [bad habits](http://www.gadgette.com/2016/02/01/6-lessons-to-forget-before-you-start-learning-to-code/) you might have picked up before, and most importantly learn to love the [beautiful presentation of data](https://www.edwardtufte.com/tufte/).
+
+I hope that you enjoy the class this term!
+
+<br>
+
+# Schedule
+
+This table will fill in as the term progresses.
+
 ```{r echo=FALSE}
-courseR::renderTable("schedule.yml")
+courseR::renderTable("../schedule.yml", template = "../templates/site/table.html")
 ```
 
+# Course Description
+
+We live in the era of Big Data. Major discoveries in science and medicine are being made by exploring large datasets in novel ways using computational tools.  The challenge in the biomedical sciences is the same as in Silicon Valley: knowing what computational tools are right for a project and where to get started when exploring large data sets.  In this course students will learn to use R, a popular open-source programming language and data analysis environment, to interactively explore data.  Case studies will be drawn from across the sciences and medicine.  Topics will include data visualization, machine learning, image analysis, geospatial analysis, and statistical inference on large data sets.  We will also emphasize best practices in coding, data handling and adherence to the principles of reproducible research.  No prior programming experience is required.
+
+<br>
+
+# Learning Objectives
+
+* Effective scientific communication.  In this course you will have many opportunities to practice effective scientific communication in both formal and informal settings, including:  informal classroom discussions, a written project proposal, and through the code that you write describing statistical/computational approaches to data analysis problems.
+
+* Use and understanding of the scientific method.  Your final data analysis project will challenge you to develop a clearly defined scientific question and to think deeply and creatively about computational approaches to answering that question.
+
+* Knowledge of major concepts in biology.  The case studies that we consider in this class will review major concepts in molecular biology, genetics, and cell biology covered in the pre-requisites for this course and extend these topics into more applied contexts. 
+
+* Using the “tools and techniques” of science.  This course is heavily focused on the computational and statistical tools commonly used to analyze large scale data sets in the biomedical sciences.
+
+* Scientific literacy.  You will have ample opportunity in this course to increase your exposure to cutting-edge investigations and to practice critical analysis of experimental approaches and the interpretation of data.
+
+<br>
+
+# Accessibility & Classroom Climate
+
+Our goal is to make this course as accessible and inclusive to as diverse a range of participants as possible.  If at any point during the term you have questions or comments concerning accessibility in our classroom, please feel free to discuss them with me.  I am eager to consider ways to make the classroom more inviting and to ensure your full participation in the course.
+
+If formal accommodations need to be made to meet your specific learning or physical abilities, please contact Wendy Price, the Assistant Dean of the College (Baker Hall 119, x8746) to provide the university with documentation of your needs.  We can then develop a plan to make appropriate accommodations.
+
+<br>
+
+# Attendance
+
+If you miss class due to an event that you have previously discussed with me and that I have agreed constitutes a verified absence (examples include travel to interviews, academic conferences, or athletic competitions), you will not be penalized in the participation portion of your grade or for missed in-class work or projects.  Because of the dynamic nature of this course, however, it will usually not be possible for you to make up missed classroom exercises or group work, so your final grade will simply be calculated from a smaller number of total possible points.  If you know you are going to be missing class please talk to me about it as early in the term as possible.   Also, please plan to remind me of your upcoming absence the week prior to the event.
+
+Missing a class due to an un-verified absence will be reflected negatively in the class participation portion of your grade.  Additionally, any missed in-class assignments or quizzes will be graded as a 0.
+
+<br>
+
+# Methods of assessment
+
+No one really likes to be graded or -- indeed -- to grade.  But here is how your performance in this class will be assessed:
+
+* Course participation (20%)
+* Coding assignments (25%)
+* Final Project (55%)
+  - Project pitch (5%)
+  - Preview and critique (10%)
+  - Progress presentation (15%)
+  - Final submission (15%)
+
+**Course Participation**:  This portion of your grade will reflect (1) how actively you participate in the classroom and (2) the thoughtfulness and insightfulness of your contributions.  If you have any questions about your participation in the course, I’d be happy to give you feedback at any point in the term.
+
+**Coding and data analysis exercises**.  Each exercise and case study we explore in class will be followed by a coding or data analysis assignment for you to work on outside of class.  These assignments will be graded on a binary basis:  either your solution meets all of the requirements (full credit) or it doesn’t.
+
+**Final project**.  Your final project in this course will be to design and implement a web application that give the user an opportunity to explore a data set of your choosing in a novel way.  We'll spend lots of time exploring the tools you'll need to accomplish this task.  These project will be completed in groups of 2 people.
+
+**Grading rubric**.   As is the case in most courses at W&L, each piece of work in this class will be graded according to its own merits, not on a curve.  In general, A-level work distinguishes itself by exhibiting both ambition (creative; insightful; pushes beyond the minimum requirements of the assignment) and perfection (well written; technically accurate; strongly supported with evidence from the literature).  B-level work achieves one of these goals (ambition or perfect), but not necessarily both.  C-level work fulfills the minimum requirements of the assignment.

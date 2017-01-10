@@ -11,9 +11,6 @@ checkAssignment(name, path = getwd())
 
 \item{path}{path to your course project folder}
 }
-\value{
-true if we don't find anything dodgy
-}
 \description{
 Allows you to check your current progress on an assignment against a
 reference solution.

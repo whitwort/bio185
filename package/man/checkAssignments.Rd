@@ -7,7 +7,7 @@
 checkAssignments(path = getwd())
 }
 \arguments{
-\item{path}{}
+\item{path}{path to your course project folder}
 }
 \description{
 This function behaves differently when called from a student versus 

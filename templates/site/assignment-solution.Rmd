@@ -1,6 +1,13 @@
 ---
 title:      "{{title}}"
-output:     courseR::solution
+output:     
+  courseR::solution:
+    theme:      sandstone
+    toc:        true
+    toc_depth:  2
+    toc_float:  true
+    include:
+      after_body: footer.html
 assignment: "{{assignment}}"
 rdsPath:    {{rdsPath}}
 ---
