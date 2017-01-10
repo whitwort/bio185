@@ -1,6 +1,6 @@
 ---
 title:      "{{title}}"
-output:     html_document
+output:     {{build.package.name}}::assignment
 assignment: "{{assignment}}"
 ---
 

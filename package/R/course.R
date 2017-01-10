@@ -1,13 +1,10 @@
 #' Start an assignment
 #' 
-#' @param name name of the assignment to start
-#' @param overwrite if true this function will overwrite any existing work
-#'   you've done on this asignment already
-#' @param path path to your course project folder
-#'   
+#' @inheritParams courseR::startAssignment
+#' 
 #' @export
 startAssignment <- function(name, overwrite = FALSE, path = getwd()) {
-  courseR::startAssignment(name = name, overwrite = overwrite, path = path, pgk = system.file(package = "bio185"))
+  courseR::startAssignment(name = name, overwrite = overwrite, path = path, pkg = system.file(package = "bio185"))
 }
 
 #' Check an assignment
@@ -15,10 +12,8 @@ startAssignment <- function(name, overwrite = FALSE, path = getwd()) {
 #' Allows you to check your current progress on an assignment against a
 #' reference solution.
 #' 
-#' @param name name of the assignment to check
-#' @param path path to your course project folder
-#'   
-#' @return true if we don't find anything dodgy
+#' @inheritParams courseR::checkAssignment
+#' 
 #' @export
 checkAssignment <- function(name, path = getwd()) {
   courseR::checkAssignment(name = name, path = path, pkg = system.file(package = "bio185"))
@@ -30,8 +25,7 @@ checkAssignment <- function(name, path = getwd()) {
 #' and/or ready for grading.  You can resubmit assignments; doing so will reset
 #' the current grading information.
 #' 
-#' @param name name of the assignment to submit
-#' @param path path to your course project folder
+#' @inheritParams courseR::submitAssignment
 #'   
 #' @export
 submitAssignment <- function(name, path = getwd()) {
@@ -44,9 +38,21 @@ submitAssignment <- function(name, path = getwd()) {
 #' instructor account.  For students, it shows your current progress on all
 #' assignments; for instructors a grading interface.
 #' 
-#' @param path
+#' @inheritParams courseR::checkAssignments
 #'   
 #' @export
 checkAssignments <- function(path = getwd()) {
   courseR::checkAssignments(path = path, pkg = system.file(package = "bio185"))
-}  
+}
+
+#' Custom RMarkdown document type that parses student assignments
+#' 
+#' Flag an Rmd file as an assignment by setting its output type to this
+#' function; not meant to be called directly.
+#' 
+#' @inheritParams courseR::assignment
+#' 
+#' @export
+assignment <- function(...) {
+  courseR::assignment(pkg = system.file(package = "bio185"), ...)
+} 
