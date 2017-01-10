@@ -1,5 +1,5 @@
 ---
-title:  Welcome to Data Science!
+title:  Welcome to Bio-185 Data Science!
 ---
 
 ```{r setup, include=FALSE}
@@ -10,13 +10,13 @@ Welcome to the course website for **Biol-185**:  [Data Science](https://en.wikip
 
 Over the course of the term I hope that you start to feel like a [coding ninja](http://code-ninja.co/), forget [bad habits](http://www.gadgette.com/2016/02/01/6-lessons-to-forget-before-you-start-learning-to-code/) you might have picked up before, and most importantly learn to love the [beautiful presentation of data](https://www.edwardtufte.com/tufte/).
 
-I hope that you enjoy the class this term!
+I also hope that you have fun learning to explore big(*ish*) data this term!
 
 <br>
 
 # Schedule
 
-This table will fill in as the term progresses.
+This table will fill in as the term goes on.
 
 ```{r echo=FALSE}
 courseR::renderTable("../schedule.yml", template = "../templates/site/table.html")
@@ -60,7 +60,7 @@ Missing a class due to an un-verified absence will be reflected negatively in th
 
 # Methods of assessment
 
-No one really likes to be graded or -- indeed -- to grade.  But here is how your performance in this class will be assessed:
+No one really likes to be graded -- or indeed -- to grade.  But here is how your performance in this class will be assessed:
 
 * Course participation (20%)
 * Coding assignments (25%)
