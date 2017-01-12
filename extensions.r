@@ -6,4 +6,6 @@ push <- function(build = FALSE, www = TRUE, pkg = TRUE) {
   
 }
 
-
+clean <- function() {
+  unlink(x = c("_site","build","dist"), recursive = TRUE)
+}

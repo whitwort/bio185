@@ -1,18 +1,26 @@
 - Week: '1'
-  Topics: 
-    ""
-  Reading: 
-    Check out [google.com](http://google.com)
-  Tutorials: 
-    ""
-  Assignments: 
-    ""
+  Topics: |
+    Introduction
+    Data Science
+  Reading: |
+    **Thursday**
+    [Introduction](http://r4ds.had.co.nz/introduction.html).  You don't need to worry about installing anything; your accounts on [RNA](https://rna.wlu.edu/r) are already setup.
+    [Explore: Introduction](http://r4ds.had.co.nz/explore-intro.html).  A quick overview of a typical data analysis workflow.
+    [R Markdown](http://r4ds.had.co.nz/r-markdown.html).  Look over sections 27.1 to 27.4, but only the introduction to 27.4 not all the details.  Code chunk and document options on your markdown documents for assignemnts in this class will be automatically setup for you.
+  Pages: |
+    [Why R?](01-whyR.html)
+    [R 101](02-r-101.html)
+    RMarkdown
+    Visualization
+  Assignments: |
+    **Thursday**
+    Review [R 101](02-r-101.html)
 - Week: '2'
   Topics: 
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -21,7 +29,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -30,7 +38,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -39,7 +47,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -48,7 +56,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -57,7 +65,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -66,7 +74,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -75,7 +83,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -84,7 +92,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -93,7 +101,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""
@@ -102,7 +110,7 @@
     ""
   Reading: 
     ""
-  Tutorials: 
+  Pages: 
     ""
   Assignments: 
     ""

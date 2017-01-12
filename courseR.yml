@@ -1,9 +1,6 @@
 # Paths relative to the current working directory where build() expects to find things
 paths:
   
-  # root project path
-  project: 
-  
   # link content/assignments to data files with the `data: ` header.  Students 
   # get local copies of data files when they start assignments.
   data: data
@@ -35,6 +32,7 @@ build:
     dist:         www
     max-chars:    144         # removes blocks of text from slides; set to false to disable
     url:          http://localhost/bio185 # no trailing slash
+    img:          img
 
 # Course-specific configuration options; these change the default view for the 
 # assignments shiny app.  * makes all users include that type's view.

@@ -1,0 +1,388 @@
+---
+title:  "R 101"
+type:   content
+---
+
+# Working with simple data
+
+## Interacting with R
+
+The command line is the primary mechanism that you'll use to interact with R.  When you enter instructions the R interpreter will perform computations for you. 
+
+While this may seem like an arcane method for interacting with software, it has one *huge* advantage over point-and-click environments:  it is incredibly easy to repeat or abstract computations that you need to do often or on very large data sets.  Any instruction that you type at the R command line can also be saved to a "R script" file or an "R Markdown" document.  These files are just plain text files (by convention, R scripts have a ".r" or ".R" at the end of the file name and markdown files end in ".rmd").  Running an R script or documents is identical to hand typing all of the commands in that script at the command line.
+
+Let's try entering some simple math expressions to see how this interaction with the command line works.  In the code examples you see on this site the commands you type are followed by the text or visual output that R produces.
+
+What will happen when you enter these commands? Try it out.
+
+```{r eval=FALSE}
+1 + 2
+2 * 3
+4 ^ 5
+6.7 / 8.9
+````
+
+No surprises; R can be used as a calculator.  R recognizes the standard syntax for numbers and mathematical operators.  When you've enter a complete [expression][] at the command line and hit "enter", R [evaluates](http://en.wikipedia.org/wiki/Evaluation_strategy) the result of that expression.  If you don't tell R what to do with the result, it will just print out a representation of the value on the next line.
+
+## Saving data in variables
+
+Usually you will want to perform a calculation and save the result for later use.  If you've used Excel, you've probably used cells on a worksheet to hold the results of calculations based on the data in other cells.  In R we can save the results of computations in [variables][].  To do this we'll use the assignment operator, which is a little arrow `<-`.
+
+If you're coming from another programming language and the arrow syntax bugs you, you *can* use `=` operator for general assignment -- see the R help pages for a few important edge cases.
+
+```{r}
+a <- 10
+a
+b <- a + 11
+b
+c <- a / b
+c
+```
+
+##
+
+If you're working with very large numbers you can use scientific notation:
+
+```{r}
+2e10
+2 * 10^10
+2e10 == 2 * 10^10
+```
+
+In that last line we used the comparison operator `==`; it tests whether or not two values are equivalent.
+
+Finally, let's see what happens if we try hitting `enter` before we've finished entering a complete expression.  Type `2 +` and then hit `enter`.  You'll see a little `+` shows up as your prompt on the next line.  This is R's way of telling you the text you've entered so far isn't a complete thought.  Finish this expression by entering another number and hitting `enter` again.
+
+## Everything is a vector
+
+In the above expressions we appeared to be doing computations on single numbers.  In fact, something more complicated was going on under the hood.  In R all data are actually [vectors](http://en.wikipedia.org/wiki/Array_data_structure) of values.
+
+Unlike other programming languages, there are no scalar values in R; the most basic data structure is a vector.  Single values are just vectors with one element.  This may seem odd at first, until you consider the key implication:  all operators and functions in R are built to handle vectors of data, not just single values.  This means anything that can be done with a single number can also be done with a vector of numbers.  This is a language that was clearly designed by statisticians! 
+  
+You can see how many elements a vector holds using the `length` function:
+  
+```{r}
+length(10)
+length(c)
+length(1:10)
+```
+
+Above `length` is the first example we've seen of an R [function][].  In programming, functions are analogous to their mathematical counter parts: they take in one or more values and evaluate to a new value.  The R syntax for running, or "calling", a function is in the form of `functionName(value1, value2, ...)`.  We'll explore functions in more depth on Monday.
+
+## Composing vectors
+
+The `length` function has reported that we've been working with vectors of 1 element so far.  To **c**ompose a vector with more than one element, we'll use the `c()` function:
+
+```{r}
+c(1,2,3,4)
+d <- c(5,6,7,8)
+d + 10
+d + d
+```
+
+As you can see, mathematical operators in R are built to handle vectorized operations:  we could add a 4 element vector `d` to a one element vector `10` and get a sensible result.
+
+**Side note for programmers**:  if you're coming to R with a background in other programming languages, you might have caught something in the last code block that freaked you out.  We had previously assigned the variable `c` to hold a number; yet we were still able to call the built-in `c` function from this scope.  In almost any other common scripting language this would not have worked.  Although base scoping rules in R are strictly lexical, there are a number of aggressive additional checks that are performed on look-up failures.  For example, when an attempt is made to apply a non-function in an inner scope, the interpreter will ascend the scope chain looking for up-values that *are* functions.  This is why we were able to bind `c` to a vector of numbers in our current scope and still use the base R `c()` function.  Another example of this design philosophy at play in R is aggressive partial matching for named arguments in function calls.  Core R is designed with fallbacks galore to give it a good shot at being able to execute whatever mess you hand it.
+
+## Strings
+
+So far we've just been working with numbers (`numeric` values in R lingo), but R also supports text (`string` values) and True/False (`boolean` values) data.
+
+To create strings, surround your text with either double `" ... "` or single `' ... '` quotes:
+
+```{r}
+"a"
+"a" == 'a'
+c( "a", "b", "c", "d" )
+```
+
+## Escape characters
+
+You can create strings containing single quotes using double quotes and visa versa, but if you need to make a string that contains both single and double quotes you need to use the `\` "escape" character:
+
+```{r}
+s <- "My data are \"awesome\"!"
+cat(s)
+```
+
+## 
+
+Two other special string characters are tab `\t` and newline `\n`:
+
+```{r}
+s <- "a\tb\tc"
+cat(s)
+s <- "a\nb\nc"
+cat(s)
+```
+
+## Boolean values
+
+To create Boolean values use `TRUE` or `FALSE`:
+
+```{r}
+TRUE
+FALSE
+TRUE == FALSE
+```
+
+## Missing Data
+
+R has built-in support for flagging values as missing data.  The special `NA` value can be mixed with any other kind of data in a vector.  For example:
+
+```{r}
+c(1, 2, NA, 4)
+c( "a", NA, "c", NA )
+c(TRUE, FALSE, NA, FALSE)
+is.na( c(1, NA) )
+```
+
+Most R functions will either understand how to deal with missing data, or issue an error if they involve a type of statistical analysis that can't be used with missing data.
+
+## A note about NULL
+
+R also has a special "no-value" type called `NULL`.  If you are coming to R from another programming language it is easy confuse `NA` and `NULL` (for example, in Python data analysis modules the `None` type is often used to do double duty, signifying `NULL` or `NA` depending on the context).  By convention, you should use `NA` in data structures to represent missing data points.  
+
+`NULL` is used to signify unassigned variables:
+  
+```{r}
+NULL
+is.null(NULL)
+```
+
+# Indexing syntax in R
+
+## Extracting values
+
+Let's say we have a vector of numbers:
+```{r}
+myNumbers <- c( 10, 20, 30, 40, 50 )
+```
+
+##
+
+We can extract elements from 1D vectors using the index syntax `[]` and integers:
+```{r}
+myNumbers
+myNumbers[1]
+myNumbers[3]
+```
+
+##
+
+Here, we've extracted elements at the position given by the integer we put inside of the `[...]`.  Remember that the numbers `1` and `3` in the code above are actually *vectors* of integers.  
+
+We can use integer vectors with more than one element inside of our index `[...]`'s::
+
+```{r}
+myNumbers[ c(1, 3) ]
+```
+
+##
+
+You can use the `:` operator to easily create a sequence of numbers:
+
+```{r}
+2:4
+myNumbers[2:4]
+```
+
+##
+
+In addition to putting integer vectors inside of the index `[...]` we can also use logical vectors.  If we do, `TRUE` at a position causes a value to be extracted, while a `FALSE` indicates that it should be skipped.  Let's look at an example:
+  
+```{r}
+myNumbers
+myNumbers[ c(FALSE, TRUE,  TRUE,  TRUE,  TRUE ) ]
+myNumbers[ c(TRUE,  FALSE, FALSE, FALSE, FALSE) ]
+```
+
+##
+
+So why would you ever want to do this?  The answer lies in the combination of indexing and the logical operators (`>`, `<`, `==`, `!=`, and `%in%`).
+
+Logical operators always return a logical vector:
+  
+```{r}
+myNumbers > 25
+myNumbers < 25
+myNumbers == 30
+myNumbers != 30
+```
+
+##
+
+The `%in%` operator asks if the first set of numbers can be found in the second:
+
+```{r}
+30 %in% myNumbers
+c(10, 100) %in% myNumbers
+```
+
+##
+
+The `!` operator negates (flips) each value of a logical vector:
+  
+```{r}
+!TRUE
+!(myNumbers > 25)
+```
+
+**A note about `=` vs `==`:** Many beginners are confused by the difference between `=` and `==`.   The `=` operator is used for value assignment, traditionally for arguments inside of function calls such as `plot(x = 10, y = 1)`, or in newer versions of R in place of the `<-` operator as in `a = 10`.  If you want to compare *equivalence* between two values you'll want to use the double `==` operator.  These operations will evaluate to a logical vector (`TRUE` or `FALSE`).
+
+##
+
+So how can we combine logical comparisons with indexing?
+
+```{r}
+myNumbers[myNumbers > 25]
+myNumbers[myNumbers < 25]
+```
+
+##
+
+You can get fancy...
+
+```{r}
+myNumbers[ (myNumbers %% 2) == 0 ]
+```
+
+What happened there?  If you need help figuring it out, look up the `%%` (*modulo*) operator on the help panel.
+
+## Assigning values
+
+Finally, the indexing `[...]` syntax isn't just used to extract values from data structures.  It can also be used to assign values *into* existing structures.  For example:
+  
+```{r}
+myNumbers
+myNumbers[3]    <- 100
+myNumbers
+myNumbers[2:3]  <- c(1,2)
+myNumbers
+```
+
+# Bigger data structures
+
+As we saw in the previous section, vectors are the basic building blocks of all data in R and can hold numeric, string or Boolean values.  Vectors can in turn be composed into more complicated data structures including matrices, arrays, data frames and lists.
+
+## Matrix
+
+A matrix is a vector of vectors, each the same length and with the same type of data:
+
+```{r}
+m <- matrix(1:8, nrow = 2, ncol = 4)
+m
+```
+
+##
+
+You access values on a matrix by using a one element index, referring to a n'th position:
+
+```{r}
+m[2]
+```
+
+Alternatively you can specify a `[row, col]`:
+```{r}
+m[1, 2]
+```
+
+##
+
+Or just a row:
+  
+```{r}
+m[1, ]
+```
+
+Or just a column:
+  
+```{r}
+m[, 2]
+```
+
+If you forget this syntax, just pay attention to how R prints out matrices!
+  
+## Array
+  
+An array is a matrix of more than two dimensions.  It's unlikely that you'll need to work with arrays this term, but it's good to know what you're looking at if you see one in the wild:
+
+```{r}
+array(1:8, dim = c(2, 2, 2))
+```
+
+## Lists
+
+Unlike arrays and matrices, lists are collections of vectors where the individual vectors can hold different types of data and be of different lengths:
+  
+```{r}
+l <- list( a = c(1, 2, 3, 4), b = c("a", "b", "c") )
+l
+```
+
+##
+
+You can access individual vectors on lists using indexing with numbers or names:
+  
+```{r}
+l[1]
+l["a"]
+```
+
+Did you notice what type of thing was returned there?
+
+##
+
+To simplify the result of indexing down to a vector (rather than a one element list):
+  
+```{r}
+l[[1]]
+l[["a"]]
+```
+
+The second example above is a common task in R: referring to a named elements on a list to get the value (instead of a list with that value as the only element).  Because of this there's a short hand, the `$`:
+
+```{r}
+l$a
+l$a == l[["a"]]
+```
+
+##
+
+Make sure you understand why this fails:
+
+```{r eval=FALSE}
+l$a == l["a"]
+```
+
+# Failure is an option!
+
+## It doesn't work and it's R's fault!
+
+We've all been there: you're sure your code is perfect and yet the machine isn't doing what it "should."  Of course, this always means the problem is that your code is broken -- you've made a false assumption, you've skipped a step that you thought you included, etc. -- but in general, people [don't like to be wrong](https://en.wikipedia.org/wiki/Confirmation_bias), and chances are good that you're a person.
+
+So how can you shift your thinking to get moving again when you're stuck and frustrated?
+
+## Play, play and play some more!
+
+When we communicate with other people, most of us try to avoid making statements that have obvious errors or that are going to elicite a negative response.  For many folks, when you first start programming it's natural to instictively avoid entering expressions that seem to have a high likelihood of failure.  
+
+But, of course, the R interpreter isn't actually going to judge you!  In fact, it's (close to) impossible for you to do anything that's going to break* R or the server.  If you find an edge case that I haven't protected you from yet, it only takes about 30s for us to reboot.
+
+So this is all to say that you SHOULD try to run expressions that will fail!  If a function isn't doing what you expect it do in your code then PLAY with it!  Throw crazy data at it and see what happens!  Errors are awesome; you learn more from them than code that silently does wierd stuff.
+
+* Footnote: about the most descructive thing you can do is erase all of your files.  Please don't do that.
+
+## Try to invalidate your assumptions
+
+Instictively, most people will lean towards asking questions that validate, instead of invalidate, their assumptions.  In science, we have to opperate differently: in most fields you spend most of your time running negative controls.  Think about coding the same way.
+
+## Read the manual
+
+All functions in base R and R packages are required to be documented.  You can see the help page for an R function by using the search box in R studio or the `?`:
+
+```{r eval=FALSE}
+?mean
+```
+
+At first you will probably find these help pages to be a little inscrutible, but they are all written in a well defined format so with time they will start to be easier to read.
