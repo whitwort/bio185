@@ -1,116 +1,60 @@
-- Week: '1'
+- '#': '1'
   Topics: |
-    Introduction
-    Data Science
+    [Why R?](01-whyR.html)
+    [R 101](02-r-101.html)
+    [Plots & RMarkdown](03-reproducible-research.html)
   Reading: |
-    **Thursday**
+   **Thursday**
     [Introduction](http://r4ds.had.co.nz/introduction.html).  You don't need to worry about installing anything; your accounts on [RNA](https://rna.wlu.edu/r) are already setup.
     [Explore: Introduction](http://r4ds.had.co.nz/explore-intro.html).  A quick overview of a typical data analysis workflow.
     [R Markdown](http://r4ds.had.co.nz/r-markdown.html).  Look over sections 27.1 to 27.4, but only the introduction to 27.4 not all the details.  Code chunk and document options on your markdown documents for assignemnts in this class will be automatically setup for you.
-  Pages: |
-    [Why R?](01-whyR.html)
-    [R 101](02-r-101.html)
-    RMarkdown
-    Visualization
   Assignments: |
     **Thursday**
     Review [R 101](02-r-101.html)
-- Week: '2'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '3'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '4'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '5'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '6'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '7'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '8'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '9'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '10'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '11'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
-- Week: '12'
-  Topics: 
-    ""
-  Reading: 
-    ""
-  Pages: 
-    ""
-  Assignments: 
-    ""
+- '#': '2'
+  Topic: |
+    Style Matters
+    Tidy Data
+    Visual Exploration
+  Reading: ''
+  Assignments: ''
+- '#': '3'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '4'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '5'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '6'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '7'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '8'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '9'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '10'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '11'
+  Topic: ''
+  Reading: ''
+  Assignments: ''
+- '#': '12'
+  Topic: ''
+  Reading: ''
+  Assignments: ''

@@ -30,7 +30,7 @@ build:
   site:
     build:        build       # temporary build path for intermediate rmds
     dist:         www
-    max-chars:    144         # removes blocks of text from slides; set to false to disable
+    max-chars:    100         # removes blocks of text from slides; set to false to disable
     url:          http://localhost/bio185 # no trailing slash
     img:          img         # project path for static images; copied to dist
     
@@ -42,5 +42,28 @@ build:
 
 # Course-specific configuration options; these change the default view for the 
 # assignments shiny app.
-instructor-users: "*"
-student-users: "*"       # * skips the user name check and shows studentui 
+instructor-users: gregg
+student-users: 
+  - greggstudent
+  - bowmanj17
+  - belfortis
+  - blocka
+  - brysonm
+  - burkec
+  - caldwellt
+  - campbellj
+  - ellise
+  - farronik
+  - hensonb
+  - himmelbergs
+  - hollands
+  - molnark
+  - murphyp
+  - myersc
+  - northm
+  - rileyk
+  - robertsj
+  - sarfertk
+  - singermank
+  - teawdatwanf
+  - williamsonj

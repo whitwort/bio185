@@ -4,10 +4,13 @@
 \alias{checkAssignments}
 \title{Check assignments}
 \usage{
-checkAssignments(path = getwd())
+checkAssignments(path = getwd(), autoknit = TRUE)
 }
 \arguments{
 \item{path}{path to your course project folder}
+
+\item{autoknit}{if true your assignment Rmd files will automatically be
+re-knitted when you save changes; ignored in instructor mode.}
 }
 \description{
 This function behaves differently when called from a student versus 
