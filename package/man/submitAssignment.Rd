@@ -9,7 +9,7 @@ submitAssignment(name, path = getwd())
 \arguments{
 \item{name}{name of the assignment to submit}
 
-\item{path}{path to your course project folder}
+\item{path}{optional path to your course project folder}
 }
 \description{
 Submitting an assignment flags the current version of your work as complete 

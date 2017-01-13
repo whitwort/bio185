@@ -31,7 +31,7 @@ build:
     build:        build       # temporary build path for intermediate rmds
     dist:         www
     max-chars:    100         # removes blocks of text from slides; set to false to disable
-    url:          http://localhost/bio185 # no trailing slash
+    url:          https://rna.wlu.edu/bio185 # no trailing slash
     img:          img         # project path for static images; copied to dist
     
   # Hooks name closures called in order before or after builds; their called 

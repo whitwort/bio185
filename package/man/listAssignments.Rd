@@ -4,7 +4,7 @@
 \alias{listAssignments}
 \title{List available assignments}
 \usage{
-listAssignments(pkg)
+listAssignments()
 }
 \description{
 List available assignments

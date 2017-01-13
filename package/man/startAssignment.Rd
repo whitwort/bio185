@@ -9,10 +9,10 @@ startAssignment(name, overwrite = FALSE, path = getwd())
 \arguments{
 \item{name}{name of the assignment to start}
 
-\item{overwrite}{if true this function will overwrite any existing work
+\item{overwrite}{if TRUE this function will overwrite any existing work 
 you've done on this asignment already}
 
-\item{path}{path to your course project folder}
+\item{path}{optional path to your course project folder}
 }
 \description{
 Start an assignment
