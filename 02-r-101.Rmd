@@ -5,6 +5,8 @@ type:   content
 
 # Working with simple data
 
+<br>
+
 ## Interacting with R
 
 The command line is the primary mechanism that you'll use to interact with R.  When you enter instructions the R interpreter will perform computations for you. 
@@ -23,6 +25,8 @@ What will happen when you enter these commands? Try it out.
 ````
 
 No surprises; R can be used as a calculator.  R recognizes the standard syntax for numbers and mathematical operators.  When you've enter a complete [expression][] at the command line and hit "enter", R [evaluates](http://en.wikipedia.org/wiki/Evaluation_strategy) the result of that expression.  If you don't tell R what to do with the result, it will just print out a representation of the value on the next line.
+
+<br>
 
 ## Saving data in variables
 
@@ -53,6 +57,8 @@ In that last line we used the comparison operator `==`; it tests whether or not 
 
 Finally, let's see what happens if we try hitting `enter` before we've finished entering a complete expression.  Type `2 +` and then hit `enter`.  You'll see a little `+` shows up as your prompt on the next line.  This is R's way of telling you the text you've entered so far isn't a complete thought.  Finish this expression by entering another number and hitting `enter` again.
 
+<br>
+
 ## Everything is a vector
 
 In the above expressions we appeared to be doing computations on single numbers.  In fact, something more complicated was going on under the hood.  In R all data are actually [vectors](http://en.wikipedia.org/wiki/Array_data_structure) of values.
@@ -69,6 +75,8 @@ length(1:10)
 
 Above `length` is the first example we've seen of an R [function][].  In programming, functions are analogous to their mathematical counter parts: they take in one or more values and evaluate to a new value.  The R syntax for running, or "calling", a function is in the form of `functionName(value1, value2, ...)`.  We'll explore functions in more depth on Monday.
 
+<br>
+
 ## Composing vectors
 
 The `length` function has reported that we've been working with vectors of 1 element so far.  To **c**ompose a vector with more than one element, we'll use the `c()` function:
@@ -84,6 +92,8 @@ As you can see, mathematical operators in R are built to handle vectorized opera
 
 **Side note for programmers**:  if you're coming to R with a background in other programming languages, you might have caught something in the last code block that freaked you out.  We had previously assigned the variable `c` to hold a number; yet we were still able to call the built-in `c` function from this scope.  In almost any other common scripting language this would not have worked.  Although base scoping rules in R are strictly lexical, there are a number of aggressive additional checks that are performed on look-up failures.  For example, when an attempt is made to apply a non-function in an inner scope, the interpreter will ascend the scope chain looking for up-values that *are* functions.  This is why we were able to bind `c` to a vector of numbers in our current scope and still use the base R `c()` function.  Another example of this design philosophy at play in R is aggressive partial matching for named arguments in function calls.  Core R is designed with fallbacks galore to give it a good shot at being able to execute whatever mess you hand it.
 
+<br>
+
 ## Strings
 
 So far we've just been working with numbers (`numeric` values in R lingo), but R also supports text (`string` values) and True/False (`boolean` values) data.
@@ -95,6 +105,8 @@ To create strings, surround your text with either double `" ... "` or single `' 
 "a" == 'a'
 c( "a", "b", "c", "d" )
 ```
+
+<br>
 
 ## Escape characters
 
@@ -116,6 +128,8 @@ s <- "a\nb\nc"
 cat(s)
 ```
 
+<br>
+
 ## Boolean values
 
 To create Boolean values use `TRUE` or `FALSE`:
@@ -125,6 +139,8 @@ TRUE
 FALSE
 TRUE == FALSE
 ```
+
+<br>
 
 ## Missing Data
 
@@ -139,6 +155,8 @@ is.na( c(1, NA) )
 
 Most R functions will either understand how to deal with missing data, or issue an error if they involve a type of statistical analysis that can't be used with missing data.
 
+<br>
+
 ## A note about NULL
 
 R also has a special "no-value" type called `NULL`.  If you are coming to R from another programming language it is easy confuse `NA` and `NULL` (for example, in Python data analysis modules the `None` type is often used to do double duty, signifying `NULL` or `NA` depending on the context).  By convention, you should use `NA` in data structures to represent missing data points.  
@@ -150,7 +168,11 @@ NULL
 is.null(NULL)
 ```
 
+<br>
+
 # Indexing syntax in R
+
+<br>
 
 ## Extracting values
 
@@ -249,6 +271,8 @@ myNumbers[ (myNumbers %% 2) == 0 ]
 
 What happened there?  If you need help figuring it out, look up the `%%` (*modulo*) operator on the help panel.
 
+<br>
+
 ## Assigning values
 
 Finally, the indexing `[...]` syntax isn't just used to extract values from data structures.  It can also be used to assign values *into* existing structures.  For example:
@@ -261,9 +285,13 @@ myNumbers[2:3]  <- c(1,2)
 myNumbers
 ```
 
+<br>
+
 # Bigger data structures
 
 As we saw in the previous section, vectors are the basic building blocks of all data in R and can hold numeric, string or Boolean values.  Vectors can in turn be composed into more complicated data structures including matrices, arrays, data frames and lists.
+
+<br>
 
 ## Matrix
 
@@ -302,6 +330,8 @@ m[, 2]
 ```
 
 If you forget this syntax, just pay attention to how R prints out matrices!
+
+<br>
   
 ## Array
   
@@ -310,6 +340,8 @@ An array is a matrix of more than two dimensions.  It's unlikely that you'll nee
 ```{r}
 array(1:8, dim = c(2, 2, 2))
 ```
+
+<br>
 
 ## Lists
 
@@ -355,7 +387,11 @@ Make sure you understand why this fails:
 l$a == l["a"]
 ```
 
+<br>
+
 # Failure is an option!
+
+<br>
 
 ## It doesn't work and it's R's fault!
 
@@ -363,19 +399,25 @@ We've all been there: you're sure your code is perfect and yet the machine isn't
 
 So how can you shift your thinking to get moving again when you're stuck and frustrated?
 
+<br>
+
 ## Play, play and play some more!
 
-When we communicate with other people, most of us try to avoid making statements that have obvious errors or that are going to elicite a negative response.  For many folks, when you first start programming it's natural to instictively avoid entering expressions that seem to have a high likelihood of failure.  
+When we communicate with other people, most of us try to avoid making statements that have obvious errors or that are going to elicit a negative response.  For many folks, when you first start programming it's natural to instinctively avoid entering expressions that seem to have a high likelihood of failure.  
 
 But, of course, the R interpreter isn't actually going to judge you!  In fact, it's (close to) impossible for you to do anything that's going to break* R or the server.  If you find an edge case that I haven't protected you from yet, it only takes about 30s for us to reboot.
 
-So this is all to say that you SHOULD try to run expressions that will fail!  If a function isn't doing what you expect it do in your code then PLAY with it!  Throw crazy data at it and see what happens!  Errors are awesome; you learn more from them than code that silently does wierd stuff.
+So this is all to say that you SHOULD try to run expressions that will fail!  If a function isn't doing what you expect it do in your code then PLAY with it!  Throw crazy data at it and see what happens!  Errors are awesome; you learn more from them than code that silently does weird stuff.
 
-* Footnote: about the most descructive thing you can do is erase all of your files.  Please don't do that.
+* Footnote: about the most destructive thing you can do is erase all of your files.  Please don't do that.
+
+<br>
 
 ## Try to invalidate your assumptions
 
-Instictively, most people will lean towards asking questions that validate, instead of invalidate, their assumptions.  In science, we have to opperate differently: in most fields you spend most of your time running negative controls.  Think about coding the same way.
+Instinctively, most people will lean towards asking questions that validate, instead of invalidate, their assumptions.  In science, we have to operate differently: in most fields you spend most of your time running negative controls.  Think about coding the same way.
+
+<br>
 
 ## Read the manual
 
@@ -385,4 +427,4 @@ All functions in base R and R packages are required to be documented.  You can s
 ?mean
 ```
 
-At first you will probably find these help pages to be a little inscrutible, but they are all written in a well defined format so with time they will start to be easier to read.
+At first you will probably find these help pages to be a little inscrutable, but they are all written in a well defined format so with time they will start to be easier to read.

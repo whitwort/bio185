@@ -25,7 +25,7 @@ ggplot(diamonds, aes(depth, fill = cut)) + geom_density(alpha = 0.2) + xlim(55, 
 
     The design of R and of R packages makes it nearly impossible to [hide or obfuscate](http://en.wikipedia.org/wiki/Obfuscation) source code.  As a language, R was designed from the ground up to be an open source software ecosystem.  As a result, the sources for all of base R and all packages on CRAN and BioConductor are open to scrutiny by programmers, statisticians and researchers.  Even good programmers on major software projects make mistakes, like the [folks who make Excel](http://www.joelonsoftware.com/items/2007/09/26b.html).  In the [closed source](http://en.wikipedia.org/wiki/Proprietary_software) world, bugs are only caught when users pin down odd behaviors in programs.  When software is [open source](http://en.wikipedia.org/wiki/Open_source), many eyes can directly examine the implementation of new algorithms, dramatically decreasing the likelihood that errors will make it into released software (thereby decreasing the likelihood that you will publish erroneous results).  The huge advantages that come with crowd sourcing software validation is probably why open source software [runs the internet](http://en.wikipedia.org/wiki/Linux_adoption).
 
-Finally, graphics and interactivity are baked in.  There are other open source high-level scripting languages that are quite popular in research science, like [Python](http://www.python.org/) and [Perl](http://www.perl.org/).  These programming languages offer features which are very similar to R.  However, the recent rise in popularity of R among the bioscience and data science communities has likely been driven by a few simple usability features that are unique to the R environment.  In particular, the language has been designed from the ground up to make it easy to *interactively* explore large datasets and easily produce publication-quality visualizations.  
+Finally, graphics and interactivity are baked in.  There are other open source high-level scripting languages that are quite popular in research science, like [Python](http://www.python.org/) and [Perl](http://www.perl.org/).  These programming languages offer features which are very similar to R.  However, the recent rise in popularity of R among the bioscience and data science communities has likely been driven by a few simple usability features that are unique to the R environment.  In particular, the language has been designed from the ground up to make it easy to *interactively* explore large data sets and easily produce publication-quality visualizations.  
 
 ##
 
@@ -48,7 +48,7 @@ From [librestats.com](http://librestats.com/2012/04/12/statistical-software-popu
 
 ##
 
-Although it's quite hard to nail down how frequently and in what ways different kinds of programming languages and platoforms are being used in the wild, most trends indicate that R is a (if not the) dominant environment for doing data analysis in both bioinformatics and the data sciences.  This trend is reflected in both qualitative surveys of researchers and professionals and in quantitative analyses of code used in papers and national competitions.  For example, R stacks up well in a 2013 survey:
+Although it's quite hard to nail down how frequently and in what ways different kinds of programming languages and platforms are being used in the wild, most trends indicate that R is a (if not the) dominant environment for doing data analysis in both bioinformatics and the data sciences.  This trend is reflected in both qualitative surveys of researchers and professionals and in quantitative analyses of code used in papers and national competitions.  For example, R stacks up well in a 2013 survey:
 
 ![r-in-analysis](img/r-in-analysis.JPG)
 
@@ -64,11 +64,13 @@ From [r4stats.com](http://r4stats.com/articles/popularity/).
 
 ##
 
-Although the popularity of a platform doesn't necessarily equate with it's quality or suitability to a particular task (for example, Excel), the strong community behind R provides a number of advantages to new and advanced users alike.  First, it means that it is relatively easy to get help solving problems in R:  google will nearly always turn up a useful blog post or thread.  Second, it means there is a HUGE library of community developed packages that extend the tools in base R in expansive ways.  For example, the expansion of the R tool set, as seen through the number of available addon packages:
+Although the popularity of a platform doesn't necessarily equate with it's quality or suitability to a particular task (for example, Excel), the strong community behind R provides a number of advantages to new and advanced users alike.  First, it means that it is relatively easy to get help solving problems in R:  Google will nearly always turn up a useful blog post or thread.  Second, it means there is a HUGE library of community developed packages that extend the tools in base R in expansive ways.  For example, the expansion of the R tool set, as seen through the number of available add-on packages:
 
 ![r-packages-by-time](img/r-packages.JPG)
 
 From [r4stats.com](http://r4stats.com/articles/popularity/).
+
+<br>
 
 # Why not R?
 

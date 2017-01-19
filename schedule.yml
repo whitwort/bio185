@@ -4,7 +4,7 @@
     [R 101](02-r-101.html)
     [Plots & RMarkdown](03-reproducible-research.html)
   Reading: |
-   **Thursday**
+    **Thursday**
     [Introduction](http://r4ds.had.co.nz/introduction.html).  You don't need to worry about installing anything; your accounts on [RNA](https://rna.wlu.edu/r) are already setup.
     [Explore: Introduction](http://r4ds.had.co.nz/explore-intro.html).  A quick overview of a typical data analysis workflow.
     [R Markdown](http://r4ds.had.co.nz/r-markdown.html).  Look over sections 27.1 to 27.4, but only the introduction to 27.4 not all the details.  Code chunk and document options on your markdown documents for assignemnts in this class will be automatically setup for you.
@@ -13,15 +13,33 @@
     Review [R 101](02-r-101.html)
 - '#': '2'
   Topic: |
-    Style Matters
-    Tidy Data
-    Visual Exploration
-  Reading: ''
-  Assignments: ''
+    [Visual Exploration of Data](04-visualization.html)
+    [Tidy Data: basic transforms](05-data-transform.Rmd)
+  Reading: |
+    **Tuesday**
+    [Data visualisation](http://r4ds.had.co.nz/data-visualisation.html). Review what we learned about `ggplot2` in section 3.1 - 3.3.  Look over section 3.4 - 3.5 for some more details.  Read the rest of the section if you're interested in advanced topics.
+    **Thursday**
+    [Data transformation](http://r4ds.had.co.nz/transform.html).  This chapter introduces the `dplyr` package which makes it easy to manipulate a data set.  We'll be using it extensively in this class.  You should also take a look at the [Data Wrangling Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+    [Functions](http://r4ds.had.co.nz/functions.html).  Today will introduce how you can write your own functions to keep your code clean.  You don't need to read this chapter before class, but I want to point it out because it's a great reference and worth at least skimming over.
+  Assignments: |
+    **Tuesday**
+    [Review the basics](01-the-basics.html)
+    **Thursday**
+    [Review making plots](02-making-plots.html)
 - '#': '3'
-  Topic: ''
-  Reading: ''
-  Assignments: ''
+  Topic: |
+    Simple Modeling
+    Tidy Data: tidying
+  Reading: |
+    **Tuesday**
+    [Exploratory data analysis](http://r4ds.had.co.nz/exploratory-data-analysis.html).  How to visualize and model relationships between variables in your data set.
+    **Thursday**
+    [Tidy data](http://r4ds.had.co.nz/tidy-data.html). Welcome to the tidyverse; it's a good place to live.
+  Assignments: |
+    **Tuesday**
+    Comming soon...
+    **Thursday**
+    Comming soon...
 - '#': '4'
   Topic: ''
   Reading: ''

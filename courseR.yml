@@ -23,8 +23,9 @@ build:
 
   # Set `package: false` to skip building a course package
   package: 
-    dist:   bio185
-    name:   bio185
+    dist:    bio185
+    name:    bio185
+    version: 0.1
   
   # Set `site: false` to skip building the website
   site:
