@@ -1,0 +1,72 @@
+---
+title:  "Introduction to Shiny"
+type:   content
+---
+
+# Shiny
+
+[Shiny](https://shiny.rstudio.com/) is an awesome, elegant, web application framework designed to make it easy to create data-driven, interactive, visualizations using R.  You've already seen it in action:  it's what I used to create the [assignment checker](https://github.com/whitwort/courseR/blob/master/R/student-UI.r) for this class, and it's what you'll use for your projects at the end of the course.  Today we'll see how we can use it from within R markdown documents to make interactive plots.
+
+# Make it Shiny
+
+To get started, create a new R markdown document, but choose "Shiny" as the type of document.  The key bit is the header line that says:
+
+```
+runtime: shiny
+```
+
+Let's make one of our plots from the last class interactive.  Data and packages:
+
+```{r}
+library(nycflights13)
+library(dplyr)
+library(ggplot2)
+```
+
+Recall this plot:
+
+```{r}
+flights %>%
+  group_by(origin, carrier) %>%
+  summarize(n         = n(),
+            ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  ggplot(aes(n, ave_delay, color = origin)) + geom_point()
+```
+
+One thing that makes this plot a bit difficult to interpret is that we're lumping all of the carriers together.  We group on the unique combination of `origin` and `carrier` but there's no easy way to see which point goes with which carrier; we're already using color to show what the `origin` was.
+
+This code would filter for just one carrier:
+
+```{r}
+flights %>%
+  filter(carrier == "UA") %>%
+  group_by(origin) %>%
+  summarize(n         = n(),
+            ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  ggplot(aes(n, ave_delay, color = origin)) + geom_point()
+```
+
+Now let's make it so that we can select the carrier we want to filter by instead of hard coding it to be United.  Be prepared to have your mind blown.  It's this easy:
+
+```{r eval=FALSE}
+inputPanel(
+  selectInput("carrier", label = "Carrier", choices = unique(flights$carrier))
+)
+
+renderPlot({
+  flights %>%
+    filter(carrier == input$carrier) %>%
+    group_by(origin) %>%
+    summarize(n         = n(),
+              ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+    ggplot(aes(n, ave_delay, color = origin)) + geom_point()
+})
+```
+
+Let's take a moment to unpack what we did there!
+
+# Make interactive plots
+
+Shiny is incredibly powerful and contains lots of different types of widgets you can use for inputs.  Head on over to the [Shiny Gallery](https://shiny.rstudio.com/gallery/) now to explore your options.  The "Widgets Gallery" example is particularly useful.  All examples are shown along side the code used to create them.
+
+Now revisit your plots from last week making them interactive!

@@ -61,7 +61,7 @@ How does the `summary` change when this variable is a `factor`?
 
 Getting the median and quartile ranges for the variables in our data set is useful, but they don't tell the whole data dispersion story.
 
-To visualize dispersion for quantitative variable we can use a histogram or density plot.  Let's look at the distribution of median incomes.
+To visualize dispersion for a quantitative variable we can use a histogram or density plot.  Let's look at the distribution of median incomes.
 
 ```{r}
 library(ggplot2)
@@ -128,7 +128,7 @@ Finally, values can be mapped to `alpha` to visually "weight" points:
 ggplot(recent_grads, aes(P25th, P75th, color = Major_category, size = Total, alpha = Sample_size)) + geom_point()
 ```
 
-Finally, you can use `shape` to change the shape of points, but I would strongly recommend avoiding this for anything other than a categorical variable with a very small number of levels
+Finally, you can use `shape` to change the shape of points, but I would strongly recommend avoiding this for anything other than a categorical variable with a very small number of levels.  Otherwise, it'll be ugly.
 
 <br>
 

@@ -14,7 +14,7 @@
 - '#': '2'
   Topic: |
     [Visual Exploration of Data](04-visualization.html)
-    [Tidy Data: basic transforms](05-data-transform.Rmd)
+    [Tidy Data: basic transforms](05-data-transform.html)
   Reading: |
     **Tuesday**
     [Data visualisation](http://r4ds.had.co.nz/data-visualisation.html). Review what we learned about `ggplot2` in section 3.1 - 3.3.  Look over section 3.4 - 3.5 for some more details.  Read the rest of the section if you're interested in advanced topics.
@@ -28,29 +28,45 @@
     [Review making plots](02-making-plots.html)
 - '#': '3'
   Topic: |
-    Simple Modeling
-    Tidy Data: tidying
+    [Thinking about Models](06-modeling.html)
+    [Transformations revisited](07-tidy-data.html)
   Reading: |
     **Tuesday**
     [Exploratory data analysis](http://r4ds.had.co.nz/exploratory-data-analysis.html).  How to visualize and model relationships between variables in your data set.
     **Thursday**
     [Tidy data](http://r4ds.had.co.nz/tidy-data.html). Welcome to the tidyverse; it's a good place to live.
   Assignments: |
-    **Tuesday**
-    Comming soon...
-    **Thursday**
-    Comming soon...
 - '#': '4'
-  Topic: ''
-  Reading: ''
+  Topic: |
+    [Shiny](08-shiny.html)
+    [Shiny Continued](09-shiny-continued.html)
+  Reading:  |
+    **Tuesday**
+    [Interactive documents](http://r4ds.had.co.nz/r-markdown-formats.html).  See the `Interactivity` section for a brief introduction.
   Assignments: ''
 - '#': '5'
-  Topic: ''
-  Reading: ''
+  Topic: |
+    **Tuesday**
+    [Tidying Data](10-tidying-data.html)
+    **Thursday**
+    [Tidying Continued](11-tidying-continued.html)
+  Reading: |
+    **Tuesday**
+    [Data import](http://r4ds.had.co.nz/data-import.html).  Good reference for using `readr` to load data from different types of sources.
+    [Relational data](http://r4ds.had.co.nz/relational-data.html).  Tidyverse functions that help you to join and filter data sets.
+    [Tidy data](http://r4ds.had.co.nz/tidy-data.html). For review.
+    **Thursday**
+    [Style](http://r4ds.had.co.nz/functions.html).  See the section functions-are-for-humans-and-computers.
+    [Google Style Guide](https://google.github.io/styleguide/Rguide.xml).  Many companies and groups use Google's style guides.
+    [Hadley Style Guide](http://adv-r.had.co.nz/Style.html).  Based on Google's style guide.
   Assignments: ''
 - '#': '6'
-  Topic: ''
-  Reading: ''
+  Topic: |
+    **Tuesday**
+    [Exploring Models](12-exploring-models.html)
+  Reading: |
+    [Model Basics](http://r4ds.had.co.nz/model-basics.html).  Introduction to modeling.
+    [Model Building](http://r4ds.had.co.nz/model-building.html).  Building models and visulizing parameters.
   Assignments: ''
 - '#': '7'
   Topic: ''

@@ -1,0 +1,194 @@
+---
+title:  "Tidy Data"
+type:   content
+---
+
+# Stuff that was confusing
+
+Last class I noticed some themes in where folks were getting stuck.  Let's review some of the new tools we've learned!
+
+Data and libraries:
+
+```{r message=FALSE}
+library(nycflights13)
+library(dplyr)
+library(ggplot2)
+```
+
+## 1.  To pipe or not to pipe
+
+I was hesitant to show you the pipe early on in the term; but it's in the books, so I figured I should!  But it's led to some confusion.
+
+Use case:  a linear flow of data transformations, (optionally) ending in a `ggplot`.
+
+As an example, let's ask:  how many flights to Chicago originate at each NY airport?
+
+The non-pipe-y way:
+```{r eval=FALSE}
+ord_flights <- filter(flights, dest == "ORD")
+ord_counts  <- count(ord_flights, origin)
+ggplot(ord_counts, aes(origin, n)) + geom_bar(stat = 'identity')
+```
+
+With the pipe:
+```{r eval=FALSE}
+flights %>%
+  filter(dest == "ORD") %>%
+  count(origin) %>%
+  ggplot(aes(origin, n)) + geom_bar(stat = 'identity')
+```
+
+**Without pipe**: pass table as first argument; **with pipe**: don't.
+
+Pipe advantages:
+
+* Sorter syntax
+* No repetition
+* Avoid mistyping intermediate variable names
+
+Pipe disadvantages:
+
+* Harder to debug
+
+## 2.  Mea culpa:  removing missing values
+
+In my code last class, this:
+
+```{r}
+flights %>% 
+  group_by(carrier) %>% 
+  summarise(ave_delay = mean(!is.na(dep_delay)))
+```
+
+Should have been this:
+
+```{r}
+flights %>% 
+  group_by(carrier) %>% 
+  summarise(ave_delay = mean(dep_delay, na.rm = TRUE))
+```
+
+## 3.  Reducing dimensions:  group_by and summary functions
+
+It's easy to get turned around when you're creating summary tables.  I'd strongly recommend having a copy of the tidyverse data wrangling cheatsheet open; it's got great pictures.
+
+It's:
+
+* In RStudio:  Help -> Cheatsheets -> Data Manipulation
+* On the web (newer):  [Data transformation](https://github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf)
+
+Summary functions (`group_by` + `summarize` and `count`) produce summary tables that:
+
+1.  Has one row per group
+2.  Only the columns that you specify with `summarize`
+
+From above:
+
+```{r}
+flights %>%
+  filter(dest == "ORD") %>%
+  count(origin)
+```
+
+Note, `count` is just a convenience function.  It's the same as this:
+
+```{r}
+flights %>%
+  filter(dest == "ORD") %>%
+  group_by(origin) %>%
+  summarise(n = n())
+```
+
+`summarize` can create as many columns as you want with summary functions:
+
+```{r}
+flights %>%
+  filter(dest == "ORD") %>%
+  group_by(origin) %>%
+  summarise(n           = n(), 
+            ave_delay   = mean(dep_delay, na.rm =TRUE), 
+            worst_delay = max(dep_delay, na.rm = TRUE))
+```
+
+## 4.  Plotting categorical-categorical level counts
+
+These plots were in the reading, but it looks like many of you missed it.
+
+Example:  how many flights does each airline have at each NY airport?
+
+Option #1:  plot counts using point size with `geom_count`s
+
+```{r}
+ggplot(flights, aes(origin, carrier)) + geom_count()
+```
+
+Notice how we chose to put the variable with more levels on the y-axis.
+
+Option #2: Heatmap with `geom_tile`
+
+In this case, `geom_tile` doesn't offer a way to calculate counts on it's own.
+
+So we use the summary function `count`!
+
+```{r}
+flights %>%
+  count(origin, carrier) %>%
+  ggplot(aes(origin, carrier, fill = n)) + geom_tile()
+```
+
+Side bar:  Heat maps are awesome!  Let's switch out our summary function to look at delays instead of counts:
+
+```{r}
+flights %>%
+  group_by(origin, carrier) %>%
+  summarize(ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  ggplot(aes(origin, carrier, fill = ave_delay)) + 
+    geom_tile() + 
+    scale_fill_continuous(low = "#31a354", high = "#e5f5e0")
+```
+
+I wonder if there's a correlation between number of flights and average delay?
+
+Let's combine what we reviewed in this section with the previous!
+
+```{r}
+flights %>%
+  group_by(origin, carrier) %>%
+  summarize(n         = n(),
+            ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  ggplot(aes(n, ave_delay, color = origin)) + geom_point()
+```
+
+## Can I change the colors?
+
+Yes!  You do that by adding explicit scales to your plots with the `scale_*_` functions.
+
+If you're a scientist with no background in color theory, it's a good idea to use pallets created by people who know what they are doing.  Ggplot2 provides an easy way to access such scales from [colorbrewer](http://r4ds.had.co.nz/graphics-for-communication.html#replacing-a-scale).
+
+For a continuous variable:
+
+```{r}
+flights %>%
+  group_by(origin, carrier) %>%
+  summarize(n         = n(),
+            ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  ggplot(aes(n, ave_delay, color = origin)) + 
+    geom_point() +
+    scale_color_brewer(palette = 'Dark2')
+```
+
+## Can I make it interactive?
+
+Yes.  [Yes, you can](http://r4ds.had.co.nz/r-markdown-formats.html#interactivity).  
+
+We'll get there!
+
+# Make some models
+
+Let's revisit these:
+
+* Is there a relationship between origin/destination airport and delay time?
+* How about for arrival times?
+* Does the lenght of the flight affect delays on either end?
+* Does time of day?
+* Do some airlines make more use of some airports (*note*: categorical-categorical!)

@@ -1,0 +1,205 @@
+---
+title:  "Tidying continued"
+type:   content
+---
+
+# Matters of Style
+
+> "Code should be a description of a computation for other people to read.  That a computer can do something useful with it is a happy side-effect of a well designed language."
+- David Herman, Co-founder Mozilla Research (approx. quote)
+
+Style matters.  Up to this point in the course I've avoided throwing style rules at you as many of you are just getting your feet wet coding.  But the time has come that we need to start adhering to good coding style, lest any bad habits sink into deeply!  I've seen some real beauties over the last couple of weeks.
+
+First, some motivation.  Here are two equivalent blocks of code:
+
+```{r eval=FALSE}
+ggplot(filter(summarize(group_by(flights,origin,carrier),n=n(),ave_delay=mean(dep_delay,rn.rm=T)),n>1000))+geom_point()
+```
+
+Which you would have recognized written like this:
+
+```{r eval=FALSE}
+flights %>%
+  group_by(origin, carrier) %>%
+  summarize(n         = n(),
+            ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  filter(n > 1000) %>%
+  ggplot(aes(n, ave_delay, color = carrier)) + geom_point()
+```
+
+One is pretty easy to read, the other is horrendous.  The two style guides you should use in your R code are [Google's](https://google.github.io/styleguide/Rguide.xml) or [Hadley Wickham's](Useadv-r.had.co.nz/Style.html).
+
+## Use meaningful and consistent names
+
+There are a few different conventions for formatting the names of variables in code.  Google and Hadley disagree a bit here.  You can pick what you want to use, but you MUST always use that convention in your code.  The options come down to how you separate words (you can't use spaces:
+
+* Dots:  `variable.name` (Google preferred)
+* Camel case:  `variableName` (Google accepted)
+* Capitalized: `VariableName` (Google accepted)
+* Underscore:  `variable_name` (Tidyverse)
+
+The problem with "Dots" and "Capitalized" is that they both will look like they mean something that they don't to people coming to R from popular Object Oriented languages.  Because of this, there is a compelling argument that you shouldn't use them.  I personally prefer camelCase but have been/will be using underscore this term to be consistent with the text book.
+
+In choosing names, be sure that the names you choose have meaning.
+
+Bad:
+
+```{r eval=FALSE}
+one <- c(1, 2, 3, 4)
+two <- mean(one)
+other <- c("one", "two", "three", "four")
+```
+
+Good:
+
+```{r eval=FALSE}
+lengths     <- c(1, 2, 3, 4)
+mean_length <- mean(lengths)
+obs_names   <- c("one", "two", "three", "four")
+```
+
+Last week I saw a lot of folks get confused in their Shiny code because of poorly choosen input ids.  Identifiers for widgets like `"selected_origin"` and `"date_range"` are much clearer than `"input1"` and `"slider1"`.  Your apps are going to have a lot of input and output widgets, so you'll want to be very thoughtful about naming conventions!
+
+## Use white space!
+
+R doesn't care about spaces or newlines in your code.  Use this to write beautiful code!
+
+Compare:
+
+```{r eval=FALSE}
+z<-my_func(10,c(1,2,3,4),"string",TRUE,mean(x)>20,long=mad(x))
+```
+
+To:
+
+```{r eval=FALSE}
+z <- my_func(a    = 10,
+             b    = c(1,2,3,4),
+             c    = "string",
+             d    = TRUE,
+             e    = mean(x) > 20,
+             long = mad(x))
+```
+
+Note the use of:
+
+* Named arguments when you've got more than 2 - 3 arguments
+* White space around all operators ("=", ">", etc.)
+* New lines to enhance readability; keep each line < 80 characters
+* White space to line up "="
+
+There's an alternative multi-line list style that can be used (although it would be prohibited by Google and Hadley's style guides) called [comma-first](https://gist.github.com/isaacs/357981).  I use it because it helps solve a problem I frequently had: missing commas.  You can use it *only if you use it correctly all of the time*.  The idea is to use commas to build a vertical line between your opening parenthesis and closing parenthesis:
+
+```{r eval=FALSE}
+z <- my_func( a    = 10
+            , b    = c(1,2,3,4)
+            , c    = "string"
+            , d    = TRUE
+            , e    = mean(x) > 20
+            , long = mad(x)
+            )
+```
+
+The advantage is that it makes missing commas ridiculously easy to see:
+
+```{r eval=FALSE}
+z <- my_func( a    = 10
+            , b    = c(1,2,3,4)
+              c    = "string"
+            , d    = TRUE
+            , e    = mean(x) > 20
+            , long = mad(x)
+            )
+```
+
+This can happen when you're iterating over code, adding and removing parts of lists or function arguments.  But it's only a win if you use it correctly:  fastidiously formatting vertical columns that start with "(" end with ")" and have "," directly below/above.  Your columns will get messed up when copying and pasting code in R Studio and you'll have to fix them by hand.
+
+## Assignment opperator holy wars
+
+In the old days the only left-assignment operator in R was `<-` as in `a <- 10`.  In every other popular programming language (that has assignment operators) the left-assignment operator is `=` as in `a = 10`.  In R `=` was only used to set the values of arguments inside of functions.  Many people hated this.  The R core team responded by making `=` equivalent to `<-` everywhere *except* when assigning values to arguments in function calls.  Many people hated this.
+
+You will find [some](http://stackoverflow.com/questions/1741820/assignment-operators-in-r-and) [strong](https://www.r-bloggers.com/assignment-operators-in-r-%E2%80%98%E2%80%99-vs-%E2%80%98-%E2%80%99/) [opinions](http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html) about which you should use.  You can use either in this class *as long as you are consistent*.
+
+A recommendation:  I came to R having written many thousands of lines of code where assignment was spelled `=`.  I beligerently refused to use `<-` for awhile, but I've since changed my tune.  I find `<-` a really useful, constant, reminder that I'm coding in R and not one of those other languages.
+
+# Joining Data Sets
+
+So far we've limited our analyses to variables contained within a given table.  In real projects, however, you frequently need to join information contained in multiple source tables.  Let's look at the tools `dplyr` provides to make this easy.  As always a picture is worth a thousand words and the [Data Transformation](https://github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf) cheat sheet is a great reference (see the Combine Tables section).
+
+Going back to the [GISS Surface Temperature](https://data.giss.nasa.gov/gistemp/) data we looked at in the last class, you'll see that individual tables are available for Norther and Southern hemisphere observations.
+
+Use what we learned last class to download these two files (Shell -> wget):
+
+* Northern: [https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts.csv](https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts.csv)
+* Southern: [https://data.giss.nasa.gov/gistemp/tabledata_v3/SH.Ts.csv](https://data.giss.nasa.gov/gistemp/tabledata_v3/SH.Ts.csv)
+
+For my code below, I've saved them to a `data` subfolder of my current working directory and named them `northern-mean.csv` and `southern-mean.csv`, respectively.
+
+Take a look at the files in the R Studio editor and clean up as necessary.  You'll notice that these are slightly less aweful than the file I pointed you to last class; *mea culpa*, I wanted to show you how bad it could get!
+
+For my code below, clean versions of these files are named `northern-mean-clean.csv` and `southern-mean-clean.csv`, respectively.
+
+These files are in comma-separated format.  You could use `read.table` to load them and set the separator to a `","` or use the shortcut function named `read.csv`:
+
+```{r}
+northern_raw <- read.csv("data/northern-mean-clean.csv")
+southern_raw <- read.csv("data/southern-mean-clean.csv")
+```
+
+As we did in the last class (1) we want to tidy up these tables, (2) clean up column names and (3) make a numeric month column.  Since we want to do all of those things to both tables, let's make a little function!
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+tidyTemps <- function(table) {
+  # gather
+  tidy <- gather(table[1:13], key = "month", value = "index", Jan:Dec)
+  
+  # lower case all variable names
+  colnames(tidy) <- tolower(colnames(tidy))
+  
+  # make numeric month column
+  month_n <- 1:12
+  names(month_n) <- colnames(table[2:13])
+  tidy$month_n <- month_n[tidy$month]
+  
+  # Functions return their last value; return the tidy table
+  tidy
+}
+```
+
+Now we can use our function to tidy and clean up each table:
+
+```{r}
+northern <- tidyTemps(northern_raw)
+southern <- tidyTemps(southern_raw)
+```
+
+Let's say we'd like to look at a correlation between temperatures in the two hemispheres.  To do that we need to get all of the data into the same table.  We can do that with one of the `join` functions from `dplyr`.  In this case, our tables both have the same number of rows, so it really doesn't matter which we choose. I'll use `left_join` here.
+
+```{r}
+temps <- left_join(northern, southern, by = c("year", "month_n"))
+```
+
+Take a look at the result and make sure you understood what happened there.  Let's do some clean up:
+
+```{r}
+temps$month.x <- NULL
+temps$month.y <- NULL
+colnames(temps)[2] <- "northern"
+colnames(temps)[4] <- "southern"
+```
+
+# Explore
+
+Is this table Tidy?  Well, yes and no!  If we want to look at a correlation between northern and southern hemisphere temperatures, it is.  Make that plot now!
+
+What if we want to look at plots of Northern and Southern temperatures as a function of time?  Do the tidying that you would need to and make that plot!
+
+Then try:
+
+* Play with `geom_smooth` to add a kernal trend line (which is this a nice approach given these data)
+* If you're feeling ambition try fitting a linear model to (some) of the data using `lm`
+* Make it interactive!  Allow zooming on the x-axis.
