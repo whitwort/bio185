@@ -35,7 +35,7 @@ build:
     url:          https://rna.wlu.edu/bio185 # no trailing slash
     img:          img         # project path for static images; copied to dist
     
-  # Hooks name closures called in order before or after builds; their called 
+  # Hooks name closures called in order before or after builds; they're called 
   # with the return from `update`: function(update) 
   #hooks:
     #before: 

@@ -5,9 +5,9 @@ type:   content
 
 # Sidebar:  passing data between RMarkdown workflows
 
-In the last class you (hopefully) created a table that contained the temperature data over time for both the northern and southern hemispheres.  Today we'll learn some new modeling techniques by exploring this dataset futher.
+In the last class you (hopefully) created a table that contained the temperature data over time for both the northern and southern hemispheres.  Today we'll learn some new modeling techniques by exploring this data set further.
 
-So, assuming you are creating a new RMarkdown file for each class, what's the easiest way to pass newly created data structures in one markdown to another?  Remember that each RMarkdown Knits in it's own little universe (environment), so the `temps` data from last class won't automatically be available in your new markdown for today.
+So, assuming you are creating a new R Markdown file for each class, what's the easiest way to pass newly created data structures in one markdown to another?  Remember that each R Markdown Knits in it's own little universe (environment), so the `temps` data from last class won't automatically be available in your new markdown for today.
 
 You have two options.  If the data you want to pass between markdowns is a table the best option is to use a `write.*` function in the source document and a `read.*` function in the destination.  Matching functions are compatible if you use their defaults.  Common options are:
 
@@ -15,9 +15,9 @@ You have two options.  If the data you want to pass between markdowns is a table
 * `write.csv` and `read.csv`
 * `write.delim` and `read.delim`
 
-These functions are nice because they just save the table in plain text with commonly used formatting that is likely to be parsable by other software (Excel, SAS, etc.).  If you have more complicated data structures that you need to save and load in different RMarkdown files, the `saveRDS` and `readRDS` functions are useful; by default they save compressed binary representations of your data. 
+These functions are nice because they just save the table in plain text with commonly used formatting that is likely to be parse-able by other software (Excel, SAS, etc.).  If you have more complicated data structures that you need to save and load in different R Markdown files, the `saveRDS` and `readRDS` functions are useful; by default they save compressed binary representations of your data. 
 
-Add a line to your RMarkdown from last class like:
+Add a line to your R Markdown from last class like:
 
 ```{r eval=FALSE} 
 write.table(temps, "data/temperature-by-hemisphere.txt")
@@ -25,7 +25,7 @@ write.table(temps, "data/temperature-by-hemisphere.txt")
 
 Note:  this line assumes you have a `data/` subfolder in your current working directory.
 
-Now at the top of today's RMarkdown file you can add a line like this:
+Now at the top of today's R Markdown file you can add a line like this:
 
 ```{r}
 temps <- read.table("data/temperature-by-hemisphere.txt")
@@ -107,17 +107,17 @@ temps %>%
 
 So smoothing functions are useful for highlighting qualitative trends in data, from the local to the global.  But how can we take a more formal approach?
 
-If we return to our comparison of temperatures in each hemisphere, we see a clear relationship (back to the spred-version of our table, of course!):
+If we return to our comparison of temperatures in each hemisphere, we see a clear relationship (back to the spread-version of our table, of course!):
 
 ```{r}
 ggplot(temps, aes(northern, southern, color = year)) + geom_point()
 ```
 
-We can use mathematical models to explore relationships like this one in our data.  One relatively simple, but incredibly powerful, framework for modeling on real data are [linear regression models](https://en.wikipedia.org/wiki/Linear_model).  You've almost certainly generated a linear model before by adding a "trendline" to a scatter plot in Excel.
+We can use mathematical models to explore relationships like this one in our data.  One relatively simple, but incredibly powerful, framework for modeling on real data are [linear regression models](https://en.wikipedia.org/wiki/Linear_model).  You've almost certainly generated a linear model before by adding a "trend-line" to a scatter plot in Excel.
 
-The easiest way to describe a linear model and fit parameters of that model to a data set is to use the `lm()` function.  There are lots ways to decribe your model; because this is such a common task in statistical analysis, R provides a special syntax for describing models called "formula"'s.  
+The easiest way to describe a linear model and fit parameters of that model to a data set is to use the `lm()` function.  There are lots ways to describe your model; because this is such a common task in statistical analysis, R provides a special syntax for describing models called "formula"'s.  
 
-Above, our plot was setup such that `northern` temperatures are on the independant variable axis, and southern temperatures on the dependent (a.k.a. predictor and response variables, respectively).  The formula syntax describing this relationship would be:
+Above, our plot was setup such that `northern` temperatures are on the independent variable axis, and southern temperatures on the dependent (a.k.a. predictor and response variables, respectively).  The formula syntax describing this relationship would be:
 
 ```{r}
 lm(southern ~ northern, data = temps)
@@ -146,7 +146,7 @@ ggplot(temps, aes(northern, southern, color = year)) +
   geom_abline(slope = coef(fit)[2], intercept = coef(fit)[1])
 ```
 
-So, there's a compelling trend, but also lots of variation (off-line scatter) between the actual data and our model.  Residuals are the set of values that describe the differences between the value of your function and each data point in the dataset.  The `modelr` package provides a nice function for adding residuals based on a table and a model:
+So, there's a compelling trend, but also lots of variation (off-line scatter) between the actual data and our model.  Residuals are the set of values that describe the differences between the value of your function and each data point in the data set.  The `modelr` package provides a nice function for adding residuals based on a table and a model:
 
 ```{r}
 library(modelr)
@@ -168,7 +168,7 @@ temps %>%
   ggplot(aes(resid)) + geom_histogram()
 ```
 
-The mean of your residuals should always be 0 if you fit a linear model with least-squares regresssion.
+The mean of your residuals should always be 0 if you fit a linear model with least-squares regression.
 
 It's very common to also visualize residuals as a function of the response variable:
 
@@ -203,12 +203,12 @@ temps %>%
   ggplot(aes(factor(month_n), resid)) + geom_boxplot()
 ```
 
-We can add month as a predicor variable using either `+` or `*` in our formula syntax.  The first adds independant predictors, the latter evaluates the interaction.
+We can add month as a predictor variable using either `+` or `*` in our formula syntax.  The first adds independent predictors, the latter evaluates the interaction.
 
 ```{r}
 fit_month <- lm(southern ~ northern + factor(month_n), data = temps)
 summary(fit_month)
 ```
 
-Now explore plots using your new fit!  Try adding additional possible predictive values from other data sets (*hint*: search the internet for atmosphereic C02 levels!).
+Now explore plots using your new fit!  Try adding additional possible predictive values from other data sets (*hint*: search the internet for atmospheric C02 levels!).
 

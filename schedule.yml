@@ -46,9 +46,7 @@
   Assignments: ''
 - '#': '5'
   Topic: |
-    **Tuesday**
     [Tidying Data](10-tidying-data.html)
-    **Thursday**
     [Tidying Continued](11-tidying-continued.html)
   Reading: |
     **Tuesday**
@@ -62,16 +60,22 @@
   Assignments: ''
 - '#': '6'
   Topic: |
-    **Tuesday**
     [Exploring Models](12-exploring-models.html)
   Reading: |
+    **Tuesday**
     [Model Basics](http://r4ds.had.co.nz/model-basics.html).  Introduction to modeling.
     [Model Building](http://r4ds.had.co.nz/model-building.html).  Building models and visulizing parameters.
-  Assignments: ''
+  Assignments: |
+    **Thursday**
+    Email me before class with your project topic and group or interests.
+    **Over break**
+    [Review data wrangling](03-data-wrangling.html)
 - '#': '7'
   Topic: ''
   Reading: ''
-  Assignments: ''
+  Assignments: |
+    **Thursday**
+    Project Pitches.  In a 5 minute project pitch, introduce the data set(s) you will work with and an outline for the app you'd like to create.  You can draw mock-ups on the whiteboard.
 - '#': '8'
   Topic: ''
   Reading: ''
@@ -87,8 +91,12 @@
 - '#': '11'
   Topic: ''
   Reading: ''
-  Assignments: ''
+  Assignments: |
+    **Thursday**
+    Project Preview and Critique.  Be prepared to publish a work-in-progress version of your app to show to the class.  Present a 5 minute in-class demonstration to receive suggestions and feedback. 
 - '#': '12'
   Topic: ''
   Reading: ''
-  Assignments: ''
+  Assignments: |
+    **Thursday**
+    Project Progrogress Presentation.  Show us the near final version of your app today.  We'll offer some polish suggestions to implement before the end of the term next Friday.
