@@ -8,18 +8,18 @@
 #' @export
 publishApp <- function(projectName, remove = TRUE) {
   
-  basePath <- "/var/shiny-server"
+  basePath <- "/var/shiny-server/bio185"
   path     <- file.path(basePath, projectName)
   
-  if (dir.exists(path) & remove) {
+  if (dir.exists(path) && remove) {
     message("Removing old version...")
-    unlink(path, recursive = TRUE)
-  } else if (dir.exists(path) & !remove) {
-    message("Can't publish.  An app with that name is already being hosted.  Try 'remove = TRUE'.")
+    unlink(path, recursive = TRUE, force = TRUE)
+  } else if (dir.exists(path) && !remove) {
+    message("Can't publish; an app with that name already exists.  Try 'remove = TRUE'.")
   }
-
+  
   gitURL <- paste0("https://github.com/WL-Biol185-ShinyProjects/", projectName, ".git")
-  message("Trying to clone:", gitURL)
+  message("Trying to clone: ", gitURL)
   
   system(paste0( "git clone https://github.com/WL-Biol185-ShinyProjects/"
                , projectName
@@ -27,5 +27,8 @@ publishApp <- function(projectName, remove = TRUE) {
                , projectName
                )
          )
+  
+  message("If there were no errors, your app was published to:")
+  message(paste0("https://rna.wlu.edu/shiny-apps/bio185/", projectName, "/"))
   
 }
