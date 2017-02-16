@@ -1,0 +1,94 @@
+---
+title:  "Using Git and GitHub"
+type:   content
+---
+
+# Introduction
+
+I'm going to start class today by drawing on the whiteboard to try to illustrate the key concepts behind [Git](https://en.wikipedia.org/wiki/Git), the tool that we'll be using to collaborate on our group projects.  By the time we're done, the following terms and definitions should make sense to you:
+
+* Commit: save the current state of your tracked files (locally).  Do this frequently as you work.  Write useful messages.
+* Push: send all of your changes ("commits") somewhere else ("remote").  You'll use push to send your source code changes to GitHub to share them with your group.
+* Pull: Grab new changes ("commits") from somewhere else ("remote").  You'll use this to grab the changes your group members have pushed to GitHub.
+
+Now would be an excellent time to ask questions if you're confused about anything!
+
+We'll first walk through the steps necessary to get your projects setup on GitHub and in RStudio.  Then we'll walk through an example workflow for committing and sharing changes to a project.
+
+# Setup
+
+We'll do all of the steps that follow today in class.  You only have to do them ONCE.  We'll cover the day-to-day workflow with Git in the next section.
+
+## Step 1: pick a project name
+
+Confer with your group members to pick a short, informative, name to use for your project.  Use "-" instead of spaces (ex. "our-cool-project"), and only alpha-numeric characters.  Pay attention to capitalization because it WILL MATTER.
+
+In all of the steps below replace PROJECTNAME with your actual project name (please don't actually use all caps).
+
+## Step 2: create a GitHub account
+
+You should have all done this before class; you will have gotten an invitation to join our class's [GitHub Organization](https://github.com/WL-Biol185-ShinyProjects) in your email.  Click the link in the email or go to the page above and join the organization.
+
+## Step 3: create a new repository on GitHub
+
+**This step should be done by ONE PERSON per group.**
+
+In this step, we'll create a repository to hold the source code for your Shiny app on GitHub, under our class's organization.  Login to GitHub and go to the [WL-Biol185-ShinyProjects](https://github.com/WL-Biol185-ShinyProjects) organization page.
+
+Then:
+
+1. Click on the green New button
+2. For "Repository name" use your PROJECTNAME
+3. Enter a short, useful description; include information about the data that will be featured.  You can update this later.
+4. Choose "Public"
+5. CHECK "Initialize this repository with a README"
+6. Drop down "Add .gitignore" and choose "R" (duh)
+7. (Optional) Drop down "Add a license" and pick a license.  Hit the little "i" for GitHub's suggestions.  I usually use "GNU General Public License"; if you don't care about people not sharing changes to your work choose "MIT".
+
+## Step 4: setup a new RStudio project
+
+**This step should be done by EVERYONE in your group.**
+
+1.  On your group's repository page on GitHub, click the green "Clone or Download" button 
+2.  Then click the blue "Use HTTPS"* link and then the "Copy to Clipboard" button.  The text you copied should start with "https://" and end with ".git".
+3.  In RStudio from the menu bar select "File" -> "New Project..."
+3.  Choose "Version Control", then "Git", then paste in the URL you copied from GitHub.
+4.  (Optional) You can change the name or location of the new directory that will be created to hold the project files.  But you probably don't want to.
+5.  Hit "Create"
+
+You should see the same set of files listed on your "Files" tab that you had in your GitHub repository.
+
+From here on out you **need to be careful about which project you are in on RStudio**.  When you want to work on your Shiny app, switch into this project from the Project menu (upper right).  When you want to sketch out class work, or work on assignments, make sure you are in a different project or no project!
+
+## Step 5: setup Git identity
+
+**This step should be done by EVERYONE in your group.**
+
+In RStudio from the menu bar select "Tools" -> "Shell..."
+
+In the shell enter these two commands (with your actual email and name; duh.)
+
+```bash
+git config --global user.email "your-email@mail.wlu.edu"
+git config --global user.name  "My Name"
+```
+
+## Step 6: test out the configuration
+
+**This step should be done by EVERYONE in your group.**
+
+Let's test to make sure everything is working so far.
+
+1. Open up "README.md"
+2. Make a change; any change.  Save it.
+3. Next to your "History"" tab, you should have a "Git" tab.
+4. There should be a blue "M" (for **m**odified) next to "README.md"
+5. Click the check box to stage this change, then Commit
+6. In the "Commit message" box enter something like "testing git setup"
+7. Hit "Commit".  You should see a message about one file changing.
+
+Hopefully that all worked and nothing caught fire.  At this point your using RStudio's Git panel is setup to Push and Pull changes between your (personal) local project and GitHub (shared with your group).
+
+
+
+
