@@ -10,7 +10,7 @@ push <- function(build = FALSE, www = TRUE, pkg = TRUE, projects = TRUE) {
 }
 
 clean <- function() {
-  unlink(x = c("_site","build","dist"), recursive = TRUE)
+  unlink(x = c("_site", "build", "dist"), recursive = TRUE)
 }
 
 updateProjects <- function() {

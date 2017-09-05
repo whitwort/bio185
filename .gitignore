@@ -7,3 +7,4 @@ build
 dist
 _site
 scripts
+shiny-scratchpad.R

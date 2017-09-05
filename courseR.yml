@@ -43,7 +43,7 @@ build:
 
 # Course-specific configuration options; these change the default view for the 
 # assignments shiny app.
-instructor-users: gregg
+instructor-user: gregg
 student-users: 
   - greggstudent
   - bowmanj17

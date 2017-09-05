@@ -28,6 +28,8 @@ publishApp <- function(projectName, remove = TRUE) {
                )
          )
   
+  system(paste0("chmod -R g+w /var/shiny-server/bio185/", projectName))
+  
   message("If there were no errors, your app was published to:")
   message(paste0("https://rna.wlu.edu/shiny-apps/bio185/", projectName, "/"))
   

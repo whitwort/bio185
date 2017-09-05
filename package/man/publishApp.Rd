@@ -17,4 +17,3 @@ your group's repository name on GitHub.}
 Publish the current version of a Shiny app project hosted on the course's 
 Bio-185 GitHub organization to the RNA Shiny server.
 }
-

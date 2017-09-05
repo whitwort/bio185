@@ -9,4 +9,3 @@ listAssignments()
 \description{
 List available assignments
 }
-

@@ -71,37 +71,52 @@
     [Using RStudio with GitHub](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/).  Longer video showing off RStudio features that we'll go over today in class.
     [RStudio and Git](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN).  Article with additional information about using RStudio's git features.
   Assignments: |
-    **Thursday**
-    Email me before class with your project topic and group or interests.
-    **Over break**
-    [Review data wrangling](03-data-wrangling.html)
 - '#': '7'
   Topic: ''
   Reading: ''
   Assignments: |
+    **Tuesday**
+    Project planning.
     **Thursday**
     Project Pitches.  In a 5 minute project pitch, introduce the data set(s) you will work with and an outline for the app you'd like to create.  You can draw mock-ups on the whiteboard.
 - '#': '8'
-  Topic: ''
+  Topic:  |
+    [Maps and Strings](14-leaflet.html)
   Reading: ''
   Assignments: ''
 - '#': '9'
-  Topic: ''
+  Topic: |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project workshop.
   Reading: ''
   Assignments: ''
 - '#': '10'
-  Topic: ''
+  Topic: |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project workshop.
   Reading: ''
   Assignments: ''
 - '#': '11'
-  Topic: ''
+  Topic:  |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project Preview and Critique.
   Reading: ''
   Assignments: |
     **Thursday**
     Project Preview and Critique.  Be prepared to publish a work-in-progress version of your app to show to the class.  Present a 5 minute in-class demonstration to receive suggestions and feedback. 
 - '#': '12'
-  Topic: ''
+  Topic: |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project Preview and Critique.
   Reading: ''
   Assignments: |
     **Thursday**
-    Project Progrogress Presentation.  Show us the near final version of your app today.  We'll offer some polish suggestions to implement before the end of the term next Friday.
+    Project progress Presentation.  Show us the near final version of your app today.  We'll offer some polish suggestions to implement before the end of the term next Friday.

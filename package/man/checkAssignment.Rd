@@ -18,4 +18,3 @@ re-knitted when you save changes}
 Allows you to check your current progress on an assignment against a
 reference solution.
 }
-

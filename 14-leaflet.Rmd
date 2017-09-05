@@ -112,8 +112,7 @@ Nothing's changed; but now we can use the additional columns to add annotations 
 ```{r}
 leaflet(data = lex) %>% 
   addTiles() %>% 
-  addMarkers(popup = ~place) %>%
-  addPolygons(fillColor = ~pal(rating))
+  addMarkers(popup = ~place)
 ```
 
 Notice the similarity between how we specify the column to use for the marker information and how aesthetic mappings work in ggplot:  `~place` says "use the place column to find the text to show in the popup".  Actually, this text can be any valid HTML; the `htmltools` package for helper functions that make it easy to do HTML formatting without having to know any HTML.  We'll look at an example of how we can use it in the string processing section below.
