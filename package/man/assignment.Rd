@@ -7,7 +7,7 @@
 assignment(...)
 }
 \arguments{
-\item{...}{}
+\item{...}{document parameters}
 }
 \description{
 Flag an Rmd file as an assignment by setting its output type to this

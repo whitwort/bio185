@@ -1,10 +1,6 @@
-# Paths relative to the current working directory where build() expects to find things
+# Paths are relative to the current working directory where `courseR::build()` expects to find things
 paths:
-  
-  # link content/assignments to data files with the `data: ` header.  Students 
-  # get local copies of data files when they start assignments.
-  data: data
-  
+
   # location for final build targets
   dist: dist
   
@@ -14,57 +10,72 @@ templates:
   # all key-value pairs defined here will be available as variables when 
   # templates are rendered
   data:
-    
-    name: bio185 # project name; defaults to path where init() was called
-    #... all data here as well
+ 
+    name: bio185 # project name; defaults to path where `courseR::init()` was called
+    #... define more pairs to pass along custom data to all templates
     
 # Build options
 build:
 
-  # Set `package: false` to skip building a course package
-  package: 
-    dist:    bio185
-    name:    bio185
-    version: 0.1
+  package:                  # set to FALSE to skip building a course package
+    name:          bio185 # name of the course package
+    grades:                 # Defines the grades that can be assigned to tasks in assignments
+      Done:        TRUE     # if a name is set to TRUE it flags a task as completed
+      Error:       FALSE    # if a name is set to FALSE, the task isn't complete
+      Incomplete:  FALSE
+      Poor style:  FALSE
+    autograde:              # set to FALSE to disable grade inference
+      pass:        Done     # grade to assign to passing tasks when inferring grades
+      fail:        Error    # grade to assign to failing tasks when inferring grades
+
+  site:                     # set to FALSE to skip building a course website
+    build:      build       # temporary build path for intermediate rmds
+    dist:       www         # path in the dist directory to build website to
+    max-chars:  144         # removes blocks of text from slides; set to FALSE to disable
+    url:        https://rna.wlu.edu/bio185  # root URL for the website
+    img:        img         # project path for static images; copied to dist
+    
+  projects:     FALSE       # Remove this line and uncomment example below to enable
+  #projects:                                           
+  #  githubOrg:   bio185-shiny-projects              # github organization where Shiny project repositories are hosted
+  #  shinyServer: http://localhost/shiny-server:3838/  # Base URL for the Shiny server that hosts project apps
+  #  publishPath: /var/shiny-server/bio185/          # path where students should checkout github repos to publish their Shiny apps
   
-  # Set `site: false` to skip building the website
-  site:
-    build:        build       # temporary build path for intermediate rmds
-    dist:         www
-    max-chars:    100         # removes blocks of text from slides; set to false to disable
-    url:          https://rna.wlu.edu/bio185 # no trailing slash
-    img:          img         # project path for static images; copied to dist
+  scripts:      TRUE        # should admin scripts be built to scripts/; TRUE or FALSE
     
   # Hooks name closures called in order before or after builds; they're called 
-  # with the return from `update`: function(update) 
+  # with the return from `update`.  See `courseR::update` for documentation.
   #hooks:
-    #before: 
-    #after:  
+  #  before: 
+  #  after: 
+
+# Publishing options
+publish:
+  package: live  # Location to copy package to when calling `courseR::publish()`
+  site:    live  # Location to copy the website to when calling `courseR::publish()`     
 
 # Course-specific configuration options; these change the default view for the 
-# assignments shiny app.
-instructor-user: gregg
-student-users: 
-  - greggstudent
-  - bowmanj17
-  - belfortis
-  - blocka
-  - brysonm
-  - burkec
-  - caldwellt
-  - campbellj
-  - ellise
-  - farronik
-  - hensonb
-  - himmelbergs
-  - hollands
-  - molnark
-  - murphyp
-  - myersc
-  - northm
-  - rileyk
-  - robertsj
-  - sarfertk
-  - singermank
-  - teawdatwanf
-  - williamsonj
+# assignments shiny app and setup expected file locations.
+instructor-user: username # user account for the course instructor
+student-users:            # "*"" skips the user name check and always shows studentui; otherwise this should be a list of student user accounts
+  - abbottf18
+  - barrettt18
+  - coopert19
+  - dunnm18
+  - guiderj18
+  - herra18
+  - hintonk18
+  - hoffmanl18
+  - kilgorel19
+  - kublio18
+  - limmere18
+  - palmataryh18
+  - peretsr18
+  - salterw19
+  - shieldsm18
+  - steffenr18
+  - thumulurid20
+  - trimasm18
+  - volkk18
+  - witherellg19
+home-directory:  "/home"  # path on the file system where student users' home directories can be found 

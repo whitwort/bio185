@@ -4,7 +4,7 @@
 #' 
 #' @export
 listAssignments <- function() {
-  courseR::listAssignments(pkg = system.file(package = "bio185"))
+  courseR::listAssignments(pkg = system.file(package = "{{name}}"))
 }
 
 #' Start an assignment
@@ -13,7 +13,7 @@ listAssignments <- function() {
 #' 
 #' @export
 startAssignment <- function(name, overwrite = FALSE, path = getwd()) {
-  courseR::startAssignment(name = name, overwrite = overwrite, path = path, pkg = system.file(package = "bio185"))
+  courseR::startAssignment(name = name, overwrite = overwrite, path = path, pkg = system.file(package = "{{name}}"))
 }
 
 #' Check an assignment
@@ -25,7 +25,7 @@ startAssignment <- function(name, overwrite = FALSE, path = getwd()) {
 #' 
 #' @export
 checkAssignment <- function(name, path = getwd(), autoknit = TRUE) {
-  courseR::checkAssignment(name = name, path = path, autoknit = autoknit, pkg = system.file(package = "bio185"))
+  courseR::checkAssignment(name = name, path = path, autoknit = autoknit, pkg = system.file(package = "{{name}}"))
 }
 
 #' Submit an assignment
@@ -38,7 +38,7 @@ checkAssignment <- function(name, path = getwd(), autoknit = TRUE) {
 #'   
 #' @export
 submitAssignment <- function(name, path = getwd()) {
-  courseR::submitAssignment(name = name, path = path, pkg = system.file(package = "bio185"))
+  courseR::submitAssignment(name = name, path = path, pkg = system.file(package = "{{name}}"))
 }
 
 #' Check assignments
@@ -51,7 +51,7 @@ submitAssignment <- function(name, path = getwd()) {
 #'   
 #' @export
 checkAssignments <- function(path = getwd(), autoknit = TRUE) {
-  courseR::checkAssignments(path = path, autoknit = autoknit, pkg = system.file(package = "bio185"))
+  courseR::checkAssignments(path = path, autoknit = autoknit, pkg = system.file(package = "{{name}}"))
 }
 
 #' Custom RMarkdown document type that parses student assignments
@@ -63,7 +63,7 @@ checkAssignments <- function(path = getwd(), autoknit = TRUE) {
 #' 
 #' @export
 assignment <- function(...) {
-  courseR::assignment(pkg = system.file(package = "bio185"), ...)
+  courseR::assignment(pkg = system.file(package = "{{name}}"), ...)
 }
 
 
@@ -76,7 +76,7 @@ assignment <- function(...) {
 #'   
 #' @export
 website <- function() {
-  courseR::website(pkg = system.file(package = "bio185"))
+  courseR::website(pkg = system.file(package = "{{name}}"))
 }
 
 #' Publishes the current version of your Shiny project to a public server
@@ -88,5 +88,5 @@ website <- function() {
 #'   
 #' @export
 publishApp <- function(...) {
-  courseR::publishApp(projectName = projectName, remove = remove, pkg = system.file(package = "bio185"))
-} 
+  courseR::publishApp(projectName = projectName, remove = remove, pkg = system.file(package = "{{name}}"))
+}

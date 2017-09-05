@@ -1,0 +1,12 @@
+# This is a standard R Markdown Website configuration file; see 
+# http://rmarkdown.rstudio.com/rmarkdown_websites.html for examples and details.
+
+name: bio185
+output:
+  html_document:
+    theme:      cosmo
+    toc:        true
+    toc_depth:  2
+    toc_float:  true
+    include:
+      after_body: footer.html 
