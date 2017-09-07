@@ -77,6 +77,7 @@ student-users:            # "*"" skips the user name check and always shows stud
   - trimasm18
   - volkk18
   - witherellg19
+  - mcgheev19
   - greggstudent
 home-directory:  "/home"  # path on the file system where student users' home 
                           # directories can be found.  It's require if using the 

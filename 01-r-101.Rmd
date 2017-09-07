@@ -3,12 +3,12 @@ title:  "Review the basics"
 type:   assignment
 ---
 
-```{r echo=FALSE}
+```{r echo=FALSE, include=FALSE}
 library(courseR)
 library(checkr)
 ```
 
-# Review the basic basics
+# R 101 review
 
 Let's start simple and review the use of variables and doing basic math operations.
 
@@ -108,10 +108,11 @@ find_call("length(welcome)", "You'll want to use the `length()` function.")
 
 # Practice Indexing
 
-Create a vector holding the numbers `1` through `42` and save it in a variable called `x`.
+Create a vector holding the numbers `1` through `42` and save it in a variable called `x`. Then print it.
 
 ```{r solution}
 x <- 1:42
+x
 ```
 
 ```{r checkr}

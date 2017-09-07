@@ -33,7 +33,7 @@ This will do two things: (1) give you a fresh copy of the assignment R Markdown 
 
 You can open the assignment R Markdown file in RStudio by going to the Files tab and clicking on the file name (if you don't see the file on your files tab, that means your current working directory isn't what you have open on that tab).
 
-You'll see that the assignment R Markdown file contains a mix of plain English text (technically markdown code) and little blocks surrounded by three-tick marks ("```").  You'll complete assignments by adding your R code to the inside of each of these little blocks, right where you see the comment line ("# Enter your code here!").  It's important that you enter your code to solve each task in the assignment in the block right below the instructions telling you what to do.
+You'll see that the assignment R Markdown file contains a mix of plain English text (technically [markdown](https://en.wikipedia.org/wiki/Markdown) code) and little blocks surrounded by three-tick marks ("```").  You'll complete assignments by adding your R code to the inside of each of these little blocks, right where you see the comment line ("# Enter your code here!").  It's important that you enter your code to solve each task in the assignment in the block right below the instructions telling you what to do.
 
 When you're ready to check your solutions, run the `checkAssignment` function, again with the assignment name:
 
@@ -47,7 +47,7 @@ If your solutions all contain valid R code, you will see the assignment app laun
 
 This app will show you feedback and the answer key output for each of the tasks in the assignment.  First, you should check the output from your solution against the output on my answer key (you won't see my code; only the output).  Second, if a task is highlighted in orange this means that the automatic code-checker found a problem; see the message at the bottom for hints.
 
-Solutions that have no obvious problems but that I haven't "graded" are surrounded by light grey boxes.  Green boxes mean that the automatic checker thinks your answer is a good match to the answer key or that I've manually graded that task as "Done".  Red-ish Error boxes surround tasks that I've manually flagged as needing more work; see my note at the bottom for more information.
+Solutions that have no obvious problems but that I haven't "graded" are surrounded by light grey boxes.  Blue boxes means the the automatic code checker thinks your answer is a good match for the answer key, but that I haven't accepted it yet when grading.  Green boxes mean that I looked over your answer and marked it as done.  Red-ish Error boxes surround tasks that I've flagged as needing more work; see my note at the bottom for more information.
 
 You can continue working on your solution file while the app is open: every time you save changes it will automatically try to re-knit your solutions and update the feedback.
 

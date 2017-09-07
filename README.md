@@ -1,6 +1,6 @@
 # bio185
 
-Course website for Biol-185: Introduction to Data Science at W&L.  Build with [courseR](https://github.com/whitwort/courseR):
+Course website for [Biol-185: Introduction to Data Science at W&L](https://rna.wlu.edu/bio185/).  Build with [courseR](https://github.com/whitwort/courseR):
 
 ```r
 devtools::install_github("whitwort/courseR")
