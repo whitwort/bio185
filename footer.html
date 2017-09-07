@@ -1,8 +1,43 @@
 <div id="footer-content">
   <!-- placeholder for footer content; will be populated on page load on built website -->
   <script type = "text/javascript">
+    $(document).ready(function () {
+      hljs.initHighlighting();
+    });
     $(function() {
       $("#footer-content").load("includes.html #footer-content");
     });
   </script>
 </div> 
+
+
+<style>
+  /* fix for scrollbar fix; it overly compresses space between headers and 
+     preceeding paragraphs 
+  */
+  .section h1 {
+    padding-top: 66px;
+    margin-top: -36px;
+  }
+  
+  .section h2 {
+    padding-top: 66px;
+    margin-top: -26px;
+  }
+  .section h3 {
+    padding-top: 66px;
+    margin-top: -16px;
+  }
+  .section h4 {
+    padding-top: 66px;
+    margin-top: -66px;
+  }
+  .section h5 {
+    padding-top: 66px;
+    margin-top: -66px;
+  }
+  .section h6 {
+    padding-top: 66px;
+    margin-top: -66px;
+  }
+</style>

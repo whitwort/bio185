@@ -1,0 +1,66 @@
+---
+title:  "Bio-185 Assignments"
+type:   content
+---
+
+# Assignents in Bio-185
+
+For the first half of the course as you are learning new material, there will be a number of assignments for you to complete on your own after class to help you check to make sure you're following along and keeping up!
+
+I've written an R package that facilitates the submission and grading of assignments for the course; it also provides as much instant feedback to you as it can while your working on the assignments.
+
+**Note**:  The course app is a brand new piece of software and there are certainly going to be bugs!  Let me know when you have problems; please save the text of any error messages or warnings you get.  
+
+# Working on assignments
+
+We'll be using R Markdown documents for assignments in the class.  We'll talk a lot more about this file format next week, and why it's a really useful tool.  For now there's just a few simple things you have to know.
+
+To see the list of all available assignments in the class, use the `listAssignments` function in the `bio185` app, like this:
+
+```{r eval=FALSE}
+bio185::listAssignments()
+```
+
+This will print out the names of assignments that are ready (including those you've already started/submitted).
+
+To start an assignment, use the `startAssignment` function with the name of the assignment you want to start working on:
+
+```{r eval=FALSE}
+bio185::startAssignment("01-r-101")
+```
+
+This will do two things: (1) give you a fresh copy of the assignment R Markdown file (in this case `01-r-101`) in your current working directory, and (2) update the `data/` subfolder in your current directory with source data files for the course.
+
+You can open the assignment R Markdown file in RStudio by going to the Files tab and clicking on the file name (if you don't see the file on your files tab, that means your current working directory isn't what you have open on that tab).
+
+You'll see that the assignment R Markdown file contains a mix of plain English text (technically markdown code) and little blocks surrounded by three-tick marks ("```").  You'll complete assignments by adding your R code to the inside of each of these little blocks, right where you see the comment line ("# Enter your code here!").  It's important that you enter your code to solve each task in the assignment in the block right below the instructions telling you what to do.
+
+When you're ready to check your solutions, run the `checkAssignment` function, again with the assignment name:
+
+```{r eval=FALSE}
+bio185::checkAssignment("01-r-101")
+```
+
+If you get an error at this step, it means one or more of your solutions contains invalid R code (your syntax isn't legit).  Read the message carefully and track down the offending lines.
+
+If your solutions all contain valid R code, you will see the assignment app launch in the RStudio Viewer pane.  If you'd like to make it bigger, click on the little window icon with an arrow on it.
+
+This app will show you feedback and the answer key output for each of the tasks in the assignment.  First, you should check the output from your solution against the output on my answer key (you won't see my code; only the output).  Second, if a task is highlighted in orange this means that the automatic code-checker found a problem; see the message at the bottom for hints.
+
+Solutions that have no obvious problems but that I haven't "graded" are surrounded by light grey boxes.  Green boxes mean that the automatic checker thinks your answer is a good match to the answer key or that I've manually graded that task as "Done".  Red-ish Error boxes surround tasks that I've manually flagged as needing more work; see my note at the bottom for more information.
+
+You can continue working on your solution file while the app is open: every time you save changes it will automatically try to re-knit your solutions and update the feedback.
+
+When you're done and ready to submit your assignment close the course app by hitting the "Stop" button. Then submit it to me to look over using `submitAssignment`:
+
+```{r eval=FALSE}
+bio185::submitAssignment("01-r-basics")
+```
+
+You can check in on your progress on all assignments in the course using the `checkAssignments` function:
+
+```{r eval=FALSE}
+bio185::checkAssignments()
+```
+
+

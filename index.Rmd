@@ -6,7 +6,57 @@ title:  bio185
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Index page
+Welcome to the course website for [Biol-185: Data Science](https://en.wikipedia.org/wiki/Data_science).  This is where you will find tutorial pages, readings, assignments, and the class schedule along with grading information.
 
-This template will be used to make the website's default landing page (`index.html`).
- 
+# Schedule
+
+All readings for this course will be from [R for Data Science](http://r4ds.had.co.nz/index.html) which is freely available on the web, but you might want to [order a hard copy](https://www.amazon.com/Data-Science-Transform-Visualize-Model/dp/1491910399) if you'd like to support the author.  Please read the listed sections *before* class; assignments are meant to be done *after* class unless otherwise noted.  Links in the table below will populate as the term progresses.
+
+```{r echo=FALSE, cache=FALSE}
+courseR::includeTable("../schedule.yml", template = "../templates/site/table.html", widths = c(1, 3, 4, 4))
+```
+
+# Course Description
+
+We live in the era of Big Data. Major discoveries in science and medicine are being made by exploring large data sets in novel ways using computational tools.  The challenge in the biomedical sciences is the same as in Silicon Valley: knowing what computational tools are right for a project and where to get started when exploring large data sets.  In this course you will learn to use R, a popular open-source programming language and data analysis environment, to interactively explore data.  Case studies will be drawn from across the sciences and medicine.  Topics will include data visualization, machine learning, image analysis, geospatial analysis, and statistical inference on large data sets.  We will also emphasize best practices in coding, data handling and adherence to the principles of reproducible research.  No prior programming experience is required.
+
+# Course components
+
+* Course participation (20%)
+* Coding assignments (25%)
+* Shiny Project: Project pitch (5%)
+* Shiny Project: Weekly deliverables check-ins (5% x 2)
+* Shiny Project: Project demonstration (15%)
+* Shiny Project: Final submission (25%)
+
+**Course Participation**:  This portion of your grade will reflect (1) how actively you participate in the classroom and (2) the thoughtfulness and insightfulness of your contributions.  If you have any questions about your participation in the course, I’d be happy to give you feedback at any point in the term.
+
+**Coding and data analysis assignments**.  Many of the exercises and case studies we explore in class will be followed by a coding or data analysis assignment for you to work on outside of class.  These assignments will be graded on a binary basis:  either your solution meets all of the requirements (full credit) or it doesn’t.  You should *try* to complete these assignments after class on the day they are listed on the schedule above.  It's OK if you get stuck, just be prepared to ask questions when we meet next.  Completed assignments are formally due on the last day of the term (Friday of finals week).
+
+**Shiny Project**.  Your final project in this course will be to design and implement a web application that gives the user an opportunity to explore a data set of your choosing in a novel way.  We'll spend lots of time in-class exploring the tools you'll need to accomplish this task.  These projects will be completed in groups of 2-3 people.  We will use [cool tools](https://github.com/), task management, and in-class "check-ins" to track each group members' contributions to the project. Grades related to these projects will be assigned *individually*.  When grading project-related components of the course, I will use the following rubric: pieces of work can be evaluated on the basis of either their ambition or their level of perfection.  A-level work distinguishes itself by being both ambitious (creative; insightful; pushes beyond the minimum requirements) and exhibiting perfection (fulfills the ambitions with precision and polish).  B-level work achieves one of these goals (exhibits ambition or perfection), but not quite both.  C-level work fulfills the minimum requirements of the assignment.  At any point in the process please feel free to ask me where I see your project falling on these two spectrums.
+
+![Fig. 1 Grading schema][gradingModel]
+
+# Learning Objectives
+
+* Effective scientific communication.  In this course you will have many opportunities to practice effective scientific communication in both formal and informal settings, including:  informal classroom discussions, a written project proposal, and through the code that you write describing statistical/computational approaches to data analysis problems.
+
+* Use and understanding of the scientific method.  Your final data analysis project will challenge you to develop a clearly defined scientific question and to think deeply and creatively about computational approaches to answering that question.
+
+* Using the “tools and techniques” of science.  This course is heavily focused on the computational and statistical tools commonly used to analyze large scale data sets in the sciences.
+
+* Scientific literacy.  You will have ample opportunity in this course to increase your exposure to cutting-edge investigations and to practice critical analysis of experimental approaches and the interpretation of data.
+
+# Accessibility & Classroom Climate
+
+Our goal is to make this course as accessible and inclusive to as diverse a range of participants as possible.  If at any point during the term you have questions or comments concerning accessibility in our classroom, please feel free to discuss them with me.  I am eager to consider ways to make the classroom more inviting and to ensure your full participation in the course.
+
+If formal accommodations need to be made to meet your specific learning or physical abilities, please contact Wendy Price, the Assistant Dean of the College (Baker Hall 119, x8746) to provide the university with documentation of your needs.  We can then develop a plan to make appropriate accommodations.
+
+# Attendance
+
+If you miss class due to an event that you have previously discussed with me and that I have agreed constitutes a verified absence (examples include travel to interviews, academic conferences, or athletic competitions), you will not be penalized in the participation portion of your grade or for missed in-class work or projects.  Because of the dynamic nature of this course, however, it will usually not be possible for you to make up missed classroom exercises or group work, so your final grade will simply be calculated from a smaller number of total possible points.  If you know you are going to be missing class please talk to me about it as early in the term as possible.   Also, please plan to remind me of your upcoming absence the week prior to the event.
+
+Missing a class due to an un-verified absence will be reflected negatively in the class participation portion of your grade.  Additionally, any missed in-class assignments or quizzes will be graded as a 0.
+
+[gradingModel]: img/gradingModel.png "Grading model"

@@ -1,0 +1,170 @@
+---
+title:  "Review the basics"
+type:   assignment
+---
+
+```{r echo=FALSE}
+library(courseR)
+library(checkr)
+```
+
+# Review the basic basics
+
+Let's start simple and review the use of variables and doing basic math operations.
+
+Save the number `10` in a variable named `a` and then print its contents:
+
+```{r solution}
+a <- 10
+a
+```
+
+```{r checkr}
+find_call("a <- 10", "You'll need to use the assignment operator ('<-').")
+check_final(match_number(10), "Uh, it should be 10.")
+```
+
+Store `2` in the variable `b` and print it:
+
+```{r solution}
+b <- 2
+b
+```
+
+```{r checkr}
+find_call("b <- 2", "You'll need to use the assignment operator ('<-').")
+check_final(match_number(2), "Uh, it should be 2.")
+```
+
+Add `a` to `b`:
+
+```{r solution}
+a + b
+```
+
+```{r checkr}
+find_call("a + b", "You'll need to use the addition operator ('+').")
+```
+
+Subtract `b` from `a`:
+
+```{r solution}
+a - b
+```
+
+```{r checkr}
+find_call("a - b", "You'll need to use the subtraction operator ('-').")
+```
+
+Multiply `a` and `b`:
+
+```{r solution}
+a * b
+```
+
+```{r checkr}
+find_call("a * b", "You'll need to use the multiplication operator ('*').")
+```
+
+Divide `a` by `b` (surprise, surprise):
+
+```{r solution}
+a / b
+```
+
+```{r checkr}
+find_call("a / b", "You'll need to use the division operator ('/').")
+```
+
+Raise `a` to the power of `b`:
+
+```{r solution}
+a^b
+```
+
+```{r checkr}
+find_call("a^b", "You'll need to use the power operator ('^').")
+check_final(match_number(a^b), "Uh, it should be 10.")
+```
+
+# Strings
+
+Store the strings "Hello" and "world" in a character vector assigned to the variable `welcome` and then evaluate `welcome`:
+
+```{r solution}
+welcome <- c("Hello", "world")
+welcome
+```
+
+Find the `length` of your `welcome` variable:
+
+```{r solution}
+length(welcome)
+```
+
+```{r checkr}
+find_call("length(welcome)", "You'll want to use the `length()` function.")
+```
+
+# Practice Indexing
+
+Create a vector holding the numbers `1` through `42` and save it in a variable called `x`.
+
+```{r solution}
+x <- 1:42
+```
+
+```{r checkr}
+find_call("1:42", "The easiest way to do this is to use the colon operator (':').")
+```
+
+Extract the numbers in this vector at positions 10 and 20 (in the same operation):
+
+```{r solution}
+x[c(10, 20)]
+```
+
+Extract numbers 10 through 20:
+
+```{r solution}
+x[10:20]
+```
+
+```{r checkr}
+find_call("10:20", "The easiest way to do this is to use the colon operator (':').")
+```
+
+Create a vector containing the remainder when each number in `x` is divided by 2:
+
+```{r solution}
+x %% 2
+```
+
+```{r checkr}
+find_call("x %% whatever", "The easiest way to do this is to use the modulo operator ('%%').")
+```
+
+Create a logical vector which is `TRUE` for every numbers and `FALSE` for odd numbers in `x`:
+
+```{r solution}
+x %% 2 == 0
+```
+
+```{r checkr}
+find_call("x %% 2", "The easiest way to do this is to use the modulo operator ('%%').")
+find_call("whatever == whatever", "You'll want to use the comparison operator to compare values ('==').")
+```
+
+Now, put it all together to extract the even numbers from `x`:
+
+```{r solution}
+x[x %% 2 == 0]
+```
+
+Replace all of the odd numbers in the original `x` vector with the missing value flags (`NA`), then print `x`.
+
+```{r solution}
+x[x %% 2 == 1] <- NA
+x
+```
+

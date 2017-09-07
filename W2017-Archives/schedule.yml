@@ -1,0 +1,122 @@
+- '#': '1'
+  Topics: |
+    [Why R?](01-whyR.html)
+    [R 101](02-r-101.html)
+    [Plots & RMarkdown](03-reproducible-research.html)
+  Reading: |
+    **Thursday**
+    [Introduction](http://r4ds.had.co.nz/introduction.html).  You don't need to worry about installing anything; your accounts on [RNA](https://rna.wlu.edu/r) are already setup.
+    [Explore: Introduction](http://r4ds.had.co.nz/explore-intro.html).  A quick overview of a typical data analysis workflow.
+    [R Markdown](http://r4ds.had.co.nz/r-markdown.html).  Look over sections 27.1 to 27.4, but only the introduction to 27.4 not all the details.  Code chunk and document options on your markdown documents for assignemnts in this class will be automatically setup for you.
+  Assignments: |
+    **Thursday**
+    Review [R 101](02-r-101.html)
+- '#': '2'
+  Topic: |
+    [Visual Exploration of Data](04-visualization.html)
+    [Tidy Data: basic transforms](05-data-transform.html)
+  Reading: |
+    **Tuesday**
+    [Data visualisation](http://r4ds.had.co.nz/data-visualisation.html). Review what we learned about `ggplot2` in section 3.1 - 3.3.  Look over section 3.4 - 3.5 for some more details.  Read the rest of the section if you're interested in advanced topics.
+    **Thursday**
+    [Data transformation](http://r4ds.had.co.nz/transform.html).  This chapter introduces the `dplyr` package which makes it easy to manipulate a data set.  We'll be using it extensively in this class.  You should also take a look at the [Data Wrangling Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+    [Functions](http://r4ds.had.co.nz/functions.html).  Today will introduce how you can write your own functions to keep your code clean.  You don't need to read this chapter before class, but I want to point it out because it's a great reference and worth at least skimming over.
+  Assignments: |
+    **Tuesday**
+    [Review the basics](01-the-basics.html)
+    **Thursday**
+    [Review making plots](02-making-plots.html)
+- '#': '3'
+  Topic: |
+    [Thinking about Models](06-modeling.html)
+    [Transformations revisited](07-tidy-data.html)
+  Reading: |
+    **Tuesday**
+    [Exploratory data analysis](http://r4ds.had.co.nz/exploratory-data-analysis.html).  How to visualize and model relationships between variables in your data set.
+    **Thursday**
+    [Tidy data](http://r4ds.had.co.nz/tidy-data.html). Welcome to the tidyverse; it's a good place to live.
+  Assignments: |
+- '#': '4'
+  Topic: |
+    [Shiny](08-shiny.html)
+    [Shiny Continued](09-shiny-continued.html)
+  Reading:  |
+    **Tuesday**
+    [Interactive documents](http://r4ds.had.co.nz/r-markdown-formats.html).  See the `Interactivity` section for a brief introduction.
+  Assignments: ''
+- '#': '5'
+  Topic: |
+    [Tidying Data](10-tidying-data.html)
+    [Tidying Continued](11-tidying-continued.html)
+  Reading: |
+    **Tuesday**
+    [Data import](http://r4ds.had.co.nz/data-import.html).  Good reference for using `readr` to load data from different types of sources.
+    [Relational data](http://r4ds.had.co.nz/relational-data.html).  Tidyverse functions that help you to join and filter data sets.
+    [Tidy data](http://r4ds.had.co.nz/tidy-data.html). For review.
+    **Thursday**
+    [Style](http://r4ds.had.co.nz/functions.html).  See the section functions-are-for-humans-and-computers.
+    [Google Style Guide](https://google.github.io/styleguide/Rguide.xml).  Many companies and groups use Google's style guides.
+    [Hadley Style Guide](http://adv-r.had.co.nz/Style.html).  Based on Google's style guide.
+  Assignments: ''
+- '#': '6'
+  Topic: |
+    [Exploring Models](12-exploring-models.html)
+    [Git and GitHub](13-github-projects.html)
+  Reading: |
+    **Tuesday**
+    [Model Basics](http://r4ds.had.co.nz/model-basics.html).  Introduction to modeling.
+    [Model Building](http://r4ds.had.co.nz/model-building.html).  Building models and visulizing parameters.
+    **Thursday**
+    [Introduction to GitHub](https://www.youtube.com/watch?v=FyfwLX4HAxM).  Very short video introducing GitHub and Git.
+    [Using RStudio with GitHub](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/).  Longer video showing off RStudio features that we'll go over today in class.
+    [RStudio and Git](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN).  Article with additional information about using RStudio's git features.
+  Assignments: |
+- '#': '7'
+  Topic: ''
+  Reading: ''
+  Assignments: |
+    **Tuesday**
+    Project planning.
+    **Thursday**
+    Project Pitches.  In a 5 minute project pitch, introduce the data set(s) you will work with and an outline for the app you'd like to create.  You can draw mock-ups on the whiteboard.
+- '#': '8'
+  Topic:  |
+    [Maps and Strings](14-leaflet.html)
+  Reading: ''
+  Assignments: ''
+- '#': '9'
+  Topic: |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project workshop.
+  Reading: ''
+  Assignments: ''
+- '#': '10'
+  Topic: |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project workshop.
+  Reading: ''
+  Assignments: ''
+- '#': '11'
+  Topic:  |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project Preview and Critique.
+  Reading: ''
+  Assignments: |
+    **Thursday**
+    Project Preview and Critique.  Be prepared to publish a work-in-progress version of your app to show to the class.  Present a 5 minute in-class demonstration to receive suggestions and feedback. 
+- '#': '12'
+  Topic: |
+    **Tuesday**
+    Project workshop.
+    **Thursday**
+    Project Preview and Critique.
+  Reading: ''
+  Assignments: |
+    **Thursday**
+    Project progress Presentation.  Show us the near final version of your app today.  We'll offer some polish suggestions to implement before the end of the term next Friday.
