@@ -20,7 +20,7 @@ a
 ```
 
 ```{r checkr}
-find_call("a <- 10", "You'll need to use the assignment operator ('<-').")
+find_call("whatever <- whatever", "You'll need to use the assignment operator ('<-').")
 check_final(match_number(10), "Uh, it should be 10.")
 ```
 
@@ -32,7 +32,7 @@ b
 ```
 
 ```{r checkr}
-find_call("b <- 2", "You'll need to use the assignment operator ('<-').")
+find_call("whatever <- whatever", "You'll need to use the assignment operator ('<-').")
 check_final(match_number(2), "Uh, it should be 2.")
 ```
 
@@ -43,7 +43,7 @@ a + b
 ```
 
 ```{r checkr}
-find_call("a + b", "You'll need to use the addition operator ('+').")
+find_call("whatever + whatever", "You'll need to use the addition operator ('+').")
 ```
 
 Subtract `b` from `a`:
@@ -53,7 +53,7 @@ a - b
 ```
 
 ```{r checkr}
-find_call("a - b", "You'll need to use the subtraction operator ('-').")
+find_call("whatever - whatever", "You'll need to use the subtraction operator ('-').")
 ```
 
 Multiply `a` and `b`:
@@ -63,7 +63,7 @@ a * b
 ```
 
 ```{r checkr}
-find_call("a * b", "You'll need to use the multiplication operator ('*').")
+find_call("whatever * whatever", "You'll need to use the multiplication operator ('*').")
 ```
 
 Divide `a` by `b` (surprise, surprise):
@@ -73,7 +73,7 @@ a / b
 ```
 
 ```{r checkr}
-find_call("a / b", "You'll need to use the division operator ('/').")
+find_call("whatever / whatever", "You'll need to use the division operator ('/').")
 ```
 
 Raise `a` to the power of `b`:
@@ -83,8 +83,8 @@ a^b
 ```
 
 ```{r checkr}
-find_call("a^b", "You'll need to use the power operator ('^').")
-check_final(match_number(a^b), "Uh, it should be 10.")
+find_call("whatever^whatever", "You'll need to use the power operator ('^').")
+check_final(match_number(a^b), "Uh, it should be 100.")
 ```
 
 # Strings
@@ -116,7 +116,7 @@ x
 ```
 
 ```{r checkr}
-find_call("1:42", "The easiest way to do this is to use the colon operator (':').")
+find_call("whatever:whatever", "The easiest way to do this is to use the colon operator (':').")
 ```
 
 Extract the numbers in this vector at positions 10 and 20 (in the same operation):
@@ -132,7 +132,7 @@ x[10:20]
 ```
 
 ```{r checkr}
-find_call("10:20", "The easiest way to do this is to use the colon operator (':').")
+find_call("whatever:whatever", "The easiest way to do this is to use the colon operator (':').")
 ```
 
 Create a vector containing the remainder when each number in `x` is divided by 2:
@@ -142,17 +142,17 @@ x %% 2
 ```
 
 ```{r checkr}
-find_call("x %% whatever", "The easiest way to do this is to use the modulo operator ('%%').")
+find_call("whatever %% whatever", "The easiest way to do this is to use the modulo operator ('%%').")
 ```
 
-Create a logical vector which is `TRUE` for every numbers and `FALSE` for odd numbers in `x`:
+Create a logical vector which is `TRUE` for even numbers and `FALSE` for odd numbers in `x`:
 
 ```{r solution}
 x %% 2 == 0
 ```
 
 ```{r checkr}
-find_call("x %% 2", "The easiest way to do this is to use the modulo operator ('%%').")
+find_call("whatever %% whatever", "The easiest way to do this is to use the modulo operator ('%%').")
 find_call("whatever == whatever", "You'll want to use the comparison operator to compare values ('==').")
 ```
 
