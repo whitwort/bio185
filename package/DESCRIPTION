@@ -1,7 +1,7 @@
 Package: bio185
 Title: Course package for bio185
 Version: 0.5.0
-Date: Thu Sep  7 09:56:41 2017
+Date: Thu Sep  7 11:07:15 2017
 Author: Gregg Whitworth
 Maintainer: Gregg Whitworth <whitwort@gmail.com>
 URL: http://github.com/whitwort/courseR
