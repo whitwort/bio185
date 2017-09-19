@@ -13,10 +13,9 @@
     [R 101 Review](01-r-101.html)
 - Week: '9/11'
   Topics:   |
-    Scripts and RMarkdowns and Packages, Oh My!
-    Visualizing data
-    Coding best practices: reproducible research
-    Transforming data
+    [Scripts and RMarkdowns and Packages, Oh My!](c-04-file-types.html)
+    [Visualizing data](c-05-visualizing-data.html)
+    [Loading, Exploring and Transforming Data](c-06-data-transformation.html)
   Readings:    |
     **Tuesday**
     [Workflow: scripts](http://r4ds.had.co.nz/workflow-scripts.html).  Read all of this short piece about R script files.
@@ -26,6 +25,7 @@
     [Data transformation](http://r4ds.had.co.nz/transform.html).  Read all of this section about how you can use `tidyverse` functions to filter, rearrange and calculate new values in tables of data.
   Assignments: |
     **Tuesday**
+    [Basic plotting review](02-basic-plotting.html)
     **Thursday**
 - Week: '9/18'
   Topics:   |

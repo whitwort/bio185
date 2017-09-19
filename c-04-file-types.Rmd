@@ -1,0 +1,105 @@
+---
+title:  "Scripts and R Markdowns and Packages, Oh My!"
+type:   content
+---
+
+# Interacting with R
+
+There are a few different ways you can interact with R to get it to run your programs.  You've already used one: the interactive console.  This short guide will walk through the other two, scrips and R Markdown documents, and explain how you can use other people's programs with packages.
+
+# Hacking at the console
+
+As you've seen, the *ad hoc* approach to interacting with R is to type commands in the console and interactively see the results as you go.  The command history feature in R makes this a bit safer than *ad hoc* data manipulation in other software (Excel, I'm looking at you) but today we'll see high level tools that will offer you much more reassurance that your data analysis results are solid.
+
+Take a moment to note that when you create new variable bindings in the console, you'll see the names and values of those variables show up on your Environment tab in R Studio.  When you're working in the console you're working in the "global" environment.
+
+# Scripts
+
+You can also use script files to execute R commands.  Try creating a new script file now: go to the File menu, select "New File", and then "Script".  R script files are just plain text files that contain R expressions.  You can run all of the code in a script file by calling the `source` function or clicking the "Source" button in R Studio (ctrl + shift + S).
+
+Sourcing a script file is equivalent to typing all of the commands it contains into the console.  Scripts also execute in your global environment (by default).  We'll be using script files later in the course to build your Shiny web apps.
+
+# R Markdowns & Reproducible Research
+
+The problem with both script files and the console is that they run code in the same, global, environment; they share their variables.  Keeping your code that makes figures for a paper or presentation in script files is *better* than just doing all of your analysis *ad hoc* in the console, but it runs the risk of depending on variables that you've created *ad hoc* in the console.
+
+##
+
+> "Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.."
+- Donald Knuth, 1983
+
+A few decades ago Donald Knuth's proposal that we think of our code as documents for other people to read (which he called [literate programming](https://en.wikipedia.org/wiki/Literate_programming)), has morphed into the development of [reproducible research](https://www.r-bloggers.com/what-is-reproducible-research/) movement in the data sciences which use tools developed for the former to achieve the latter.
+
+##
+
+The key idea here is very simple; if you want to trust your results you should:
+- be able to document your manipulation in plain English
+- Recreate your **entire** analysis from start to finish from scratch
+
+##
+
+The latest and greatest tool to facilitate reproducible research workflows in R is [RMarkdown](http://rmarkdown.rstudio.com/) documents.  These documents combine [markdown](https://en.wikipedia.org/wiki/Markdown) text, which is a very simple markup language with `r` code blocks.  This website is actually just compiled from a [bunch of markdown documents](https://github.com/whitwort/bio185) and all of your assignments will be done using rmarkdown docs.
+
+In additiona to allowing you to combine natural language explanations of what your code does with your actual code, R Markdown documents also have the huge advantage of running in their own, isolated, environments by default.  As a data science tool, that means working in R Markdown documents will force you to **be sure** that your entire analysis can be re-created from scratch without any surprise dependencies on *ad hoc* code you've been playing around with in the console.
+
+To create a new R Markdown document, go to `File -> New File -> R Markdown`.  Take a moment to look at the example formatting.  R code is found inside of blocks surrounded by ticks (```).  The keyboard shortcut to make a new R code block is ctrl + alt + i.
+
+Your plain text between blocks can contain "[markdown](https://en.wikipedia.org/wiki/Markdown)" syntax, which is a very simple markup language that can be compiled to a web page.  For a quick reference go to `Help -> Markdown Quick Reference`.
+
+You can make a webpage from your R Markdown documents by hitting the "Knit button" on the tool bar above them.  The HTML file that is made is entirely self-contained, so you can easily share your data analysis work with others by sending them these documents.
+
+You'll notice of course at this point that the course assignments app is just using R Markdown documents to compile and send me your solutions!
+
+# RStudio Projects
+
+RStudio has a really nice feature for managing different data analysis projects, called projects.  A project is really just a folder with a special file to flag it as the location of a project.  You should create a new project for EVERY data analysis project you're working on; trust me.  Each project has it's own global environment, command history, etc.
+
+To create a new project just use `File -> New Project`.  You should create a new bio185 project for your work in this class.  Later in the class you'll want to create a new project to hold you work on your web app.
+
+
+# Packages
+
+The next thing you're going to do in today's class is learn how to make your first graphs in R.  To do that, we're going to use a package called `ggplot2`. Packages in R are kind of like 'apps' and the R community maintains a package repository called [CRAN](https://cran.r-project.org/) which is akin to an App Store (but much better, because it's [free and open](https://en.wikipedia.org/wiki/Open_platform)!).
+
+##
+
+I've already installed `ggplot2` for you, but if you were working on your own computer you could install it by running:
+
+```{r eval=FALSE}
+# note quotes
+install.packages("ggplot2")
+```
+
+But again, you won't have to install any of the packages needed for exercises and assignments in this course because I've already done that for you.  Once a package is installed, you can load it into your current environment using the `library` function:
+
+##
+
+```{r}
+library(ggplot2)
+```
+
+##
+
+The other way to access functions in packages, which you've seen using the course app is with the `::` operator:
+
+```{r eval=FALSE}
+ggplot2::ggplot()
+```
+
+##
+
+Packages come with (possibly) three things:
+
+* New functions that you can run
+* Documentation for each function and sometimes higher level tutorials called 'vignettes' and 'demos'
+* Data sets; usually the data needed to run examples
+
+##
+
+Let's open the main help page for `ggplot2`:
+
+```{r eval=FALSE}
+?ggplot2
+```
+
+If you click on the `index` link you'll see all of the functions that `ggplot2` comes with.  It's a lot; as packages go this is a big one.  It's become the community favorite for making publication quality plots.  The [ggplot2](http://ggplot2.tidyverse.org/) website has tons of great examples for any type of plot you could imagine wanting to make (well, almost any).

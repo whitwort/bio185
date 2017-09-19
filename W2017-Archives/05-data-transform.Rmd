@@ -117,7 +117,7 @@ recent_grads$employment_dev <- recent_grads$percent_employed -
 
 # Filtering
 
-We've already seen some simple examples of how you can use indexing syntax to filter data held in variables.  The old-school way of filtering rows in tables is to setup complex indexing operations.  The new-school way is to use `dplyr`.
+We've already seen some simple examples of how you can use indexing syntax to filter data held in variables.  The old-school way of filtering rows in tables is to setup complex indexing operations.  The new-school way, which is described in the reading for today, is to use `dplyr` which is part of the `tidyverse`.
 
 ```{r}
 library(dplyr)

@@ -1,0 +1,42 @@
+---
+title:  "Basic plotting with ggplot2"
+type:   assignment
+---
+
+# Basic plotting with ggplot2
+
+Load the `ggplot2` package:
+
+```{r solution}
+library(ggplot2)
+```
+
+We'll use the `diamonds` data set for the rest of the questions in this section; remind yourself what variables are available by printing a preview of the table:
+
+```{r solution}
+print(diamonds)
+```
+
+Make a histogram showing the distribution of the `price` variable:
+
+```{r solution}
+ggplot(diamonds, aes(price)) + geom_histogram()
+```
+
+Make a density distribution showing the same:
+
+```{r solution}
+ggplot(diamonds, aes(price)) + geom_density()
+```
+
+Does diamond color affect prices?  Do the same as above, but group prices by the color of the diamond; optionally make it pretty using a little transparency:
+
+```{r solution}
+ggplot(diamonds, aes(price, fill = color)) + geom_density(alpha = 0.2)
+```
+
+Let's end with a bit more of a challenge; you'll probably need to consult the `ggplot2` documentation with `help` to do this one.  Plot the price of diamonds as a function of carats (why does this relationship make more sense than the inverse?) with a scatter plot.  Color the points based on the cut of the diamond.  Use transparency to make it easier to see overlapping points.
+
+```{r solution}
+ggplot(diamonds, aes(carat, price, color = cut)) + geom_point(alpha = 0.3)
+```
