@@ -26,23 +26,21 @@
   Assignments: |
     **Tuesday**
     [Basic plotting review](02-basic-plotting.html)
-    **Thursday**
 - Week: '9/18'
   Topics:   |
-    Exploring data
-    Tidy data
-    Data wrangling (part 1)
+    [Exploratory data analysis](c-07-exploring-data.html)
+    [Style Matters](c-08-style-matters.html)
+    [Tidy(ing) data](c-09-tidy-data.html)
   Readings:    |
     **Tuesday**
     [Exploratory data analysis](http://r4ds.had.co.nz/exploratory-data-analysis.html).  Read over all of the topics in this excellent introduction to exploratory data analysis.
     **Thursday**
     [Tidy Data]
   Assignments: |
-    **Tuesday**
     **Thursday**
 - Week: '9/25'
   Topics:   |
-    Data wrangling (part 2)
+    [Data joins](c-10-joins.html)
   Readings:    |
     **Tuesday**
     [Relational data](http://r4ds.had.co.nz/relational-data.html).  Read all of this section about how you can pull data from multiple sources.
@@ -54,6 +52,7 @@
     **Thursday**
 - Week: '10/2'
   Topics:   |
+    [Git, GitHub and projects](c-11-github-projects.html)
     Coding best practices: writing functions
     Understanding vectors and lists
   Readings:    |
