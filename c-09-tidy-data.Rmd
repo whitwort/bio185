@@ -1,0 +1,273 @@
+---
+title:  "Tidy(ing) Data"
+type:   content
+---
+
+# Data
+
+So far we've been working with data sets that are already tidy; we've loaded them from packages or sensibly formatted files.  In the wild, however, it's rare that you come across data that are ready-to-go like this.  On data analysis projects, you usually have to spend a significant portion of time wrangling your data in to a usable state.
+
+For today, let's take a look at a data set assessing changes in the global land and ocean temperature data sets hosted at the [Goddard Institute for Space Studies](https://data.giss.nasa.gov/gistemp/).  I took a guess that NASA would be a good place to find a messy data file to work with and they didn't disappoint!
+
+##
+
+The source file we'll work with today lives here on the internet:
+
+[https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.txt](https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.txt).  
+
+Open it in a web browser and have a look at it in all its messy glory.  Make sure you understand what the numbers mean.
+
+##
+
+Normally, we'd have three options for fetching data from a file on the internet:
+
+* As we did before, using the "Import Data set" wizard on the Environment tab and pasting the URL into the box.  However, no amount of fiddling is ever going to give us reasonable results with this file.  Why?
+* Download the file to your computer and then upload it to your R Studio account using the "Upload" button on the "Files" tab.
+* Skip the middle man and download the file directly.  You can do this using the "Shell" found in the "Tools" menu.
+
+##
+
+I like to keep all of my source data files separate from my script and output files.  If you don't have one already make a folder named 'data' in your current working directory ("Files" tab -> "New Folder").  You don't have to do it this way, but you'll need to change the file paths below.
+
+To download the file to your current directory in R Studio, open a Shell (this a full bash shell), and run:
+
+```{bash}
+wget -O data/global-mean.txt https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.txt
+```
+
+Note the capitol "-O", which is specifying our output file.
+
+##
+
+Fiddle all you like with the data import wizard; you're not going to get this file to parse correctly!
+
+# Cleaning up the input file
+
+Take a moment to count all of the ways this file is messed up.  Next week we'll explore some text processing tools that would allow us to take a more automated approach to cleaning up input files (useful if you have many!), but for now we'll hand edit the file recording all of the corrections we made.
+
+##
+
+Open up the text file in RStudio by navigating to your `data` directory on the "Files" tab and clicking on it.  
+
+##
+
+Hand edit it to:
+
+* Get rid of all of the header lines (1-7)
+* Get rid of all of the blank lines and repeats of column names (eg. 23-24)
+* Get rid of all of the footer lines (last 7)
+* Leave a single blank line at the end of the file (should be 139).
+* Save it **AS A NEW FILE**:  "global-mean-clean.txt"
+
+We'll do the rest of the clean up in R.
+
+# Reading the table
+
+##
+
+We can now use R's `read.table` function to load the file into a table in R:
+
+```{r}
+raw_temps <- read.table("data/global-mean-clean.txt", 
+                        header     = TRUE,
+                        na.strings = "****"
+                        )
+```
+
+##
+
+As always, let's sanity check what kinds of vectors we have in each of our columns:
+
+```{r}
+summary(raw_temps)
+```
+
+##
+
+We can see `D.N` and `DJF` are messed up; why?  
+
+If we needed them we would need to convert `***` and `****` to `NA`s and then use `as.numeric` to convert these character vectors to numeric vectors.  But we're going to erase them instead.
+
+# Tidy Data
+
+##
+
+Let's load the tidyverse:
+
+```{r}
+library(tidyverse)
+```
+
+##
+
+The tidyverse's definition of Tidy Data is a table of values where:
+
+* Each row represents one and only one observation
+* Each column represents one and only one variable
+* ALL variables in the design get one column
+
+If all of these things are true, your path to exploring that data set will be much easier than if they aren't!  It also means all of the `tidyverse` functions will "just work" with your table.
+
+##
+
+Now let's take a moment to appreciate all of the ways in which this data set is not Tidy.  It:
+
+* Uses column names to store values of *a* variable (month of observation)
+* Uses columns differently: some are summaries of others
+* Inexplicably, has two Year columns
+
+## Removing unwanted columns
+
+We have a few options for getting rid of the columns we don't want (remember assigning `NULL` to a column will erase it).  But since we know we just want to keep the first `13` columns (year and months), we can easily index:
+
+```{r}
+raw_temps[1:13]
+```
+
+##
+
+Alternatively, we could use the `tidyverse` `select` function (useful inside of a pipe chain):
+
+```{r}
+raw_temps %>%
+  select(1:13)
+```
+
+## Tidy-ifiying the columns
+
+The data set still isn't tidy:  Month should be a variable, but it's `spread` across columns.  In tidyverse lingo, what we need to `gather` them up!
+
+##
+
+I'd like to take a moment here to point out a REALLY useful resource to use when you're trying to figure out which `tidyverse` function you need to help you wrangle data:  [Data Wrangling Cheetsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+
+You can find this file in RStudio:  Help -> Cheetsheets -> Data Manipulation with dplyr and tidyr
+
+##
+
+The picture that matches what we need to do tells us it's a `gather`:
+
+```{r}
+global_temps <- gather(raw_temps[1:13], key = "month", value = "index", Jan:Dec)
+```
+
+What happened there?  Take a look at the table.
+
+##
+
+Last, but not least, *it should bother you* that the "Year" column is capitalized and the two others aren't.  I'd recommend always keeping your variable names in lower case for consistency.
+
+We can use `colnames` to update the names of our columns and `tolower` to switch strings in character vectors to all lower case:
+
+```{r}
+colnames(global_temps) <- tolower(colnames(global_temps))
+```
+
+## Creating dates
+
+The last problem we have to solve is to create dates from our year (numeric) and month (character) vectors.  To do that, we'd first like to convert months from arbitrary strings into numbers.  
+
+### Using a named vector
+
+In operations like this, where you want to translate one set of values one-to-one into another set of values, one robust solution is to create a vector of values you want to translate *to* and then add *names* to the vector containing the values you want to translate *from*.  Confused?  It's easier to understand with an example!
+
+##
+
+Let's make a vector holding month numbers:
+
+```{r}
+month_n <- 1:12
+```
+
+##
+
+Remember what this does:
+
+```{r}
+month_n[3]
+```
+
+##
+
+We can set the "names" of the numbers in this vector with the `names` function.  I could type out my month strings by hand, but I'll be lazy and use the fact that they're already in columns in our original table:
+
+```{r}
+colnames(raw_temps[2:13])
+```
+
+##
+
+So we can do this:
+
+```{r}
+names(month_n) <- colnames(raw_temps[2:13])
+```
+
+##
+
+Once you have a named vector, you can index elements by name in addition to using numeric indexes.  For example:
+
+```{r}
+month_n["Apr"]
+month_n[c("Apr", "Aug")]
+month_n[c("Apr", "Aug", "Apr")]
+```
+
+##
+
+Making our month number column then becomes as easy as indexing on our months column:
+
+```{r}
+global_temps$month_n <- month_n[global_temps$month]
+```
+
+### Using the `rep`eat function
+
+## 
+
+The solution above is robust in that it will work even if there's isn't a regular pattern in repetition of months down the rows of the table.  But that actually *is* the case for our table: we have 12 months each repeated once for the 137 years contained in the data set.
+
+If you need a new column that contains a set of values that regularly repeats, an alternative solution is to use the `rep`eat function:
+
+```{r eval=FALSE}
+rep(1:12, each = 137)
+```
+
+The `each` argument says repeat each value 137 times.  
+
+##
+
+Alternatively, we can specify a `times`:
+
+```{r}
+rep(1:12, times = 137)
+```
+
+Note the difference!
+
+### Lubridate
+
+##
+
+Finally, we'll use a helper function from a new package called `lubridate` to easily create a date column:
+
+```{r}
+library(lubridate)
+global_temps$date <- make_date(year = global_temps$year, month = global_temps$month_n)
+```
+
+We'll explore Dates and Times in more depth next week.
+
+# Analysis
+
+##
+
+Now, on your own:
+
+* Plot temperature indexes as a function of time
+* Play with `geom_smooth` to add a kernel trend line (which is this a nice approach given these data)
+* If you're feeling ambition try fitting a linear model to (some) of the data using `lm`
+* Make it interactive!  Allow zooming on the x-axis.
+* Go back to the [source data](https://data.giss.nasa.gov/gistemp/) page and compare northern and southern hemisphere trends.
+
+

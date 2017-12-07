@@ -73,16 +73,16 @@
     **Tuesday**
 - Week: '10/16'
   Topics:   |
-    Deep learning
-    Geospatial visualization
+    [Functions & Lexical scope](c-12-functions-scope.html)
+    [Leaflet & maps](c-13-leaflet.html)
   Readings: ""
   Assignments: |
     **Tuesday**
     **Thursday**
 - Week: '10/23'
   Topics:   |
-    Introducing Shiny
-    [Shiny workshop time]
+    Deep learning
+    Geospatial visualization
   Readings:    |
     **Tuesday**
     [Shiny Gallery](https://shiny.rstudio.com/gallery/).  Browse the Shiny app gallery to get an idea of what kinds of apps you'll be able to build using this R package.

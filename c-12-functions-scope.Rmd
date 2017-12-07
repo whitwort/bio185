@@ -1,0 +1,151 @@
+---
+title: "Functions and scope"
+type:   content
+---
+
+# Variable scope
+
+In programing languages [scoping](https://en.wikipedia.org/wiki/Scope_(computer_science) rules are the pattern that is used to identify the data you are refering to when you use a variable in an expression.  R implements a idiom called [lexical scope](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scope_vs._dynamic_scope) and all functions in R are lexical [closures](https://en.wikipedia.org/wiki/Closure_(computer_programming).
+
+As a beginer here's what you need to know: functions can access data in the outer environment, but the outside environment can't reach inside a function.  Let's look at some examples.
+
+The outside environment can't peak into functions:
+
+```{r}
+f1 <- function(a, b) {
+  a + b
+}
+
+f1(10 , 20)
+```
+
+```{r}
+a <- 11
+a
+f1(10, 20)
+```
+
+
+But functions can reach up to the outside:
+
+```{r}
+c <- 100
+
+f2 <- function(a, b) {
+  a + b + c
+}
+
+f2(10, 20)
+```
+
+```{r}
+c <- 200
+f2(10, 20)
+```
+
+Notice that the value of a variable at the time a function is created doesn't matter; we could change the value of `c` in the outer environment and that change was reflect in the `c` being referenced inside of our function.  It's not the value of outer variables that gets captured, it's the variable name itself.  In this context functions are called "closures" because the enclose all variables that are within the lexical scope.
+
+This behavior is recursive: values can be referenced all the way back up to the global environment.  For example:
+
+```{r}
+c  <- 100
+f3 <- function(d) {
+  function(a, b) {
+    a + b + c + d
+  }
+}
+```
+
+In this case our `f3` is a functin that returns a function (so [meta](https://en.wikipedia.org/wiki/Metaprogramming)).
+
+```{r}
+f3(10)
+f4 <- f3(1)
+f4(10, 20)
+```
+
+```{r}
+f5 <- f3(2)
+f5(10, 20)
+```
+
+This would be an equivalent of the last line (even if it is a bit [iffy](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)):
+
+```{r}
+f3(2)(10, 20)
+```
+
+# Pass-by-value and immutability
+
+So, we've covered the first part of scoping rules in R: functions can access variables in the environment in which they were created.  Now we'll consider the second part: you can use values in other environments but you can't ever change them.  In computer science lingo, R uses [pass-by-value](https://en.wikipedia.org/wiki/Evaluation_strategy) semantics and (virtually) all data types are immutable.  The implementation is based on the standard [copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write) optimization: data aren't actually replicated in memory until a function actually needs it's own copy (when you mutate it).
+
+Let's see it in action:
+
+```{r}
+c  <- 100
+f6 <- function(a, b) {
+  print(c)
+  c <- 200
+  print(c) 
+  
+  a + b + c
+}
+f6(10, 20)
+c
+```
+
+The value of `c` was only changed inside of the function `f6`; this change didn't pollute the value of `c` in the outer environment.
+
+Here's an example that might be surprising for folks who have worked in other dynamic languages:
+
+```{r}
+l  <- list(a = 10, b = 20)
+f7 <- function(mutantList) {
+  mutantList$c <- 30
+  
+  mutantList
+}
+f7(l)
+l
+```
+
+The reason this choice was made is that R is designed as a data analysis environment.  Language tools that protect you from accidentally changing your data in hard to find ways are good thing!  If you absolutely must mutate and up-value there is the `<<-` operator.  But don't ever do this; it's a terrible idea.
+
+# And now for something crazy: being lazy
+
+Feel free to ignore this part; it's just here for those who are interested in the finer points of the R language.  These scoping rules and functional semantics combine with a third aspect of the R language to allow for some really interesting design idioms: [lazy evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation).  In languages with lazy evaulation, expressions aren't actually evaluated when they are run.  Instead expressions initially become [promises](https://en.wikipedia.org/wiki/Futures_and_promises); they "promise" to have a value should it ever actually be used  Trippy, right?
+
+Let's look at an example.  Here's an idiom you'll frequently see in the R standard library to allow flexibility in defining default values for functions:
+
+```{r}
+area <- function(l, w = l) {
+  l * w
+}
+area(2, 3)
+area(2)
+```
+
+Python would not have been cool with that.
+
+Remember that everything in R is an expression and there are no statements? Syntax like `if` and `for` blocks are really just sugar for expressions.
+
+So you can do things like this:
+
+```{r}
+area <- function( l
+                , w = if (square) { l }
+                , square = if (l == w) { TRUE } else { FALSE } 
+                ) {
+  
+  if (square) { print("It's a square!") }
+  
+  l * w
+}
+area(2, 3)
+area(2, 2)
+area(2, square = TRUE)
+```
+
+This works because the expressions for `l`, `w` and `square` aren't actually evaluated until they are used in body of the function.  Up to that point in the code they're just promises and promises evaluate in run time scope. So, it's perfectly fine to define a set of expressions that have static cyclical dependencies as long as they with the order of evaluation at run time.
+
+This is either really awesome or totally insane, depending on perspective.

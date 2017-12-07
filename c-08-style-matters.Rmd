@@ -1,0 +1,114 @@
+---
+title:  "Coding best practices: Style matters"
+type:   content
+---
+
+# Matters of Style
+
+> "Code should be a description of a computation for other people to read.  That a computer can do something useful with it is a happy side-effect of a well designed language."
+- David Herman, Co-founder Mozilla Research (approx. quote)
+
+##
+
+Style matters.  Up to this point in the course I've avoided throwing style rules at you as many of you are just getting your feet wet coding.  But the time has come that we need to start adhering to good coding style, lest any bad habits sink into deeply!  I've seen some real beauties over the last couple of weeks.
+
+First, some motivation.  Here are two equivalent blocks of code:
+
+```{r eval=FALSE}
+ggplot(filter(summarize(group_by(flights,origin,carrier),n=n(),ave_delay=mean(dep_delay,rn.rm=T)),n>1000))+geom_point()
+```
+
+##
+
+Which you would have recognized written like this:
+
+```{r eval=FALSE}
+flights %>%
+  group_by(origin, carrier) %>%
+  summarize(n         = n(),
+            ave_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  filter(n > 1000) %>%
+  ggplot(aes(n, ave_delay, color = carrier)) + geom_point()
+```
+
+##
+
+One is pretty easy to read, the other is horrendous.  The two style guides you should use in your R code are:
+
+* [Google's](https://google.github.io/styleguide/Rguide.xml) 
+* [Hadley Wickham's](Useadv-r.had.co.nz/Style.html).
+
+## Use meaningful and consistent names
+
+There are a few different conventions for formatting the names of variables in code.  Google and Hadley disagree a bit here.  You can pick what you want to use, but you MUST always use that convention in your code.  The options come down to how you separate words (you can't use spaces:
+
+* Dots:  `variable.name` (Google preferred)
+* Camel case:  `variableName` (Google accepted)
+* Capitalized: `VariableName` (Google accepted)
+* Underscore:  `variable_name` (Tidyverse)
+
+The problem with "Dots" and "Capitalized" is that they both will look like they mean something that they don't to people coming to R from popular Object Oriented languages.  Because of this, there is a compelling argument that you shouldn't use them.  I personally prefer camelCase but have been/will be using underscore this term to be consistent with the text book.
+
+##
+
+In choosing names, be sure that the names you choose have meaning.
+
+Bad:
+
+```{r eval=FALSE}
+one <- c(1, 2, 3, 4)
+two <- mean(one)
+other <- c("one", "two", "three", "four")
+```
+
+##
+
+Good:
+
+```{r eval=FALSE}
+lengths     <- c(1, 2, 3, 4)
+mean_length <- mean(lengths)
+obs_names   <- c("one", "two", "three", "four")
+```
+
+Choosing good names becomes exponentially more important the more code you write for a project.  Last year a majority of bugs and headaches the cropped up in students' Shiny app projects came down to inconsistent or poorly chosen variable names.
+
+## Use white space!
+
+R doesn't care about spaces or newlines in your code.  Use this to write beautiful code!
+
+##
+
+Compare:
+
+```{r eval=FALSE}
+z<-my_func(10,c(1,2,3,4),"string",TRUE,mean(x)>20,long=mad(x))
+```
+
+To:
+
+```{r eval=FALSE}
+z <- my_func(a    = 10,
+             b    = c(1,2,3,4),
+             c    = "string",
+             d    = TRUE,
+             e    = mean(x) > 20,
+             long = mad(x))
+```
+
+##
+
+Note the use of:
+
+* Named arguments when you've got more than 2 - 3 arguments
+* White space around all operators ("=", ">", etc.)
+* New lines to enhance readability; keep each line < 80 characters
+* White space to line up "="
+
+## Assignment opperator holy wars
+
+In the old days the only left-assignment operator in R was `<-` as in `a <- 10`.  In every other popular programming language (that has assignment operators) the left-assignment operator is `=` as in `a = 10`.  In R `=` was only used to set the values of arguments inside of functions.  Many people hated this.  The R core team responded by making `=` equivalent to `<-` everywhere *except* when assigning values to arguments in function calls.  Many people hated this.
+
+You will find [some](http://stackoverflow.com/questions/1741820/assignment-operators-in-r-and) [strong](https://www.r-bloggers.com/assignment-operators-in-r-%E2%80%98%E2%80%99-vs-%E2%80%98-%E2%80%99/) [opinions](http://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html) about which you should use.  You can use either in this class *as long as you are consistent*.
+
+A recommendation:  I came to R having written many thousands of lines of code where assignment was spelled `=`.  I belligerently refused to use `<-` for awhile, but I've since changed my tune.  I find `<-` a really useful, constant, reminder that I'm coding in R and not one of those other languages.

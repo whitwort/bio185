@@ -36,9 +36,10 @@ build:
     img:        img         # project path for static images; copied to dist
 
   projects:                                           
-    githubOrg:   WL-Biol185-ShinyProjects              # github organization where Shiny project repositories are hosted
-    shinyServer: https://rna.wlu.edu/shiny-apps/  # Base URL for the Shiny server that hosts project apps
-    publishPath: /var/shiny-server/bio185/          # path where students should checkout github repos to publish their Shiny apps
+    githubOrg:   WL-Biol185-ShinyProjects            # github organization where Shiny project repositories are hosted
+    shinyServer: https://rna.wlu.edu/shiny-apps/     # Base URL for the Shiny server that hosts project apps
+    publishPath: /var/shiny-server/bio185/           # path where students should checkout github repos to publish their Shiny apps
+    logPath:     /var/shiny-server/log/              # student accounts must be able to read this directory
   
   scripts:      TRUE        # should admin scripts be built to scripts/; TRUE or FALSE
     
