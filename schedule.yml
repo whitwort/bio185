@@ -1,4 +1,4 @@
-- Week: '9/7'
+- Week: '9/2'
   Topics:   |
     [Why R?](c-01-whyR.html)
     [R 101](c-02-r-101.html)
@@ -7,11 +7,10 @@
     **Thursday**
     [Introduction](http://r4ds.had.co.nz/introduction.html).  You don't need to worry about installing anything; your RStudio accounts on [RNA](https://rna.wlu.edu/r) are already setup.
     [Explore: Introduction](http://r4ds.had.co.nz/explore-intro.html).  A quick overview of a typical data analysis workflow.
-    
   Assignments: |
     **Thursday**
     [R 101 Review](01-r-101.html)
-- Week: '9/11'
+- Week: '9/9'
   Topics:   |
     [Scripts and RMarkdowns and Packages, Oh My!](c-04-file-types.html)
     [Visualizing data](c-05-visualizing-data.html)
@@ -26,7 +25,8 @@
   Assignments: |
     **Tuesday**
     [Basic plotting review](02-basic-plotting.html)
-- Week: '9/18'
+    **Thursday**
+- Week: '9/16'
   Topics:   |
     [Exploratory data analysis](c-07-exploring-data.html)
     [Style Matters](c-08-style-matters.html)
@@ -35,10 +35,11 @@
     **Tuesday**
     [Exploratory data analysis](http://r4ds.had.co.nz/exploratory-data-analysis.html).  Read over all of the topics in this excellent introduction to exploratory data analysis.
     **Thursday**
-    [Tidy Data]
+    [Tidy Data](https://r4ds.had.co.nz/tidy-data.html).  Read over this whole section carefully.  Your lives will be substantively improved by adhering to the principles of Tidy Data!
   Assignments: |
+    **Tuesday**
     **Thursday**
-- Week: '9/25'
+- Week: '9/23'
   Topics:   |
     [Data joins](c-10-joins.html)
   Readings:    |
@@ -50,39 +51,40 @@
   Assignments: |
     **Tuesday**
     **Thursday**
-- Week: '10/2'
+- Week: '9/30'
   Topics:   |
     [Git, GitHub and projects](c-11-github-projects.html)
-    Coding best practices: writing functions
+    [Functions & Lexical scope](c-12-functions-scope.html)
     Understanding vectors and lists
   Readings:    |
     **Tuesday**
-    [Functions](http://r4ds.had.co.nz/functions.html).
+    [Functions](http://r4ds.had.co.nz/functions.html).  Learn to write your very own functions!  Doing it is easy.  Doing it well is very hard.  This chapter will give you a nice introduction.
     **Thursday**
-    [Vectors](http://r4ds.had.co.nz/vectors.html).
-    [Iteration](http://r4ds.had.co.nz/iteration.html).
+    [Vectors](http://r4ds.had.co.nz/vectors.html).  Vectors: we've been using them everywhere, without thinking too hard about what they are and how they work in R.  This chapter is a nice codex on everything vector.
+    [Iteration](http://r4ds.had.co.nz/iteration.html).  We've also been iterating over things without thinking too hard about how it worked under the hood.  This chapter introduces a number of very useful iteration design patterns. 
   Assignments: |
     **Tuesday**
     **Thursday**
-- Week: '10/9'
+- Week: '10/7'
   Topics:   |
     Finding patterns: clustering
     Finding patterns: machine learning
   Readings: ""
   Assignments: |
     **Tuesday**
-- Week: '10/16'
+    **Thursday**
+    Reading Days
+- Week: '10/14'
   Topics:   |
-    [Functions & Lexical scope](c-12-functions-scope.html)
     [Leaflet & maps](c-13-leaflet.html)
+    Geospatial visualization
   Readings: ""
   Assignments: |
     **Tuesday**
     **Thursday**
-- Week: '10/23'
+- Week: '10/21'
   Topics:   |
     Deep learning
-    Geospatial visualization
   Readings:    |
     **Tuesday**
     [Shiny Gallery](https://shiny.rstudio.com/gallery/).  Browse the Shiny app gallery to get an idea of what kinds of apps you'll be able to build using this R package.
@@ -90,7 +92,7 @@
   Assignments: |
     **Thursday**
     *Project groups*.  **Come to class ready to** either give me the names of the people in your group and general project idea, or a list of possible projects ideas/types of data you're interested in. 
-- Week: '10/30'
+- Week: '10/28'
   Topics:   |
     Introducing Git and Github
     [Project pitches]
@@ -100,28 +102,29 @@
   Assignments: |
     **Thursday**
     *Project Pitches*.  In a **5 minute project** pitch, your group should introduce the data set(s) that you are working with and why you think the topic is an interesting candidate for your web app.  You should also show mock-ups of what you want your app to look like and what features you'd like it to have; you can use pre-made slides or just draw on the whiteboard.
-- Week: '11/6'
+- Week: '11/4'
   Topics: "[Project workshop]"
   Readings:  ""
   Assignments: |
     **Tuesday**
     *Deliverables Schedule*.  **Before class** Use your Github project site to create issues for each of the major tasks and features for your project and assign them to members of your group.  I'll meet with each group individually durring class to discuss your anticipated timeline for completing each.
-- Week: '11/13'
+- Week: '11/11'
   Topics: "[Project workshop]"
   Readings:  ""
   Assignments: |
     **Thursday**
     *Deliverables check-in*.  I'll meet with each group again in class again to get a report on how well work has progressed on your major tasks.  Your project should be at least in the [alpha phase](https://en.wikipedia.org/wiki/Software_release_life_cycle):  this means a working Shiny app that you can show me, albeit likely still missing some/many features.
-- Week: '11/27'
+- Week: '11/18'
   Topics: "[Project workshop]"
   Readings:  ""
   Assignments: |
     **Thursday**
     *Deliverables check-in*.  By this point your project should be in the [beta phase](https://en.wikipedia.org/wiki/Software_release_life_cycle):  this means a working app with most/all of the major features in place, but possibly with bugs and minor features still missing.
-- Week: '12/4'
+- Week: '12/2'
   Topics:   |
     [Project workshop]
     [Project Demonstrations & Feedback]
+  Readings:  ""
   Assignments: |
     **Thursday**
     *Project Demonstrations*.  In class today, you'll walk the class through a demonstration of your Shiny app.  We'll provide feedback and polish suggestions; the final version of your app is due by the end of the day on Friday of finals week.
