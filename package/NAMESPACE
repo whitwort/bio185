@@ -3,6 +3,7 @@
 export(assignment)
 export(checkAssignment)
 export(checkAssignments)
+export(copyErrorLogs)
 export(listAssignments)
 export(publishApp)
 export(startAssignment)
