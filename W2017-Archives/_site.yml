@@ -1,9 +1,0 @@
-name: bio185
-output:
-  html_document:
-    theme:      sandstone
-    toc:        true
-    toc_depth:  2
-    toc_float:  true
-    include:
-      after_body: footer.html
