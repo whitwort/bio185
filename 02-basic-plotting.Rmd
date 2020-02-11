@@ -3,8 +3,6 @@ title:  "Basic plotting with ggplot2"
 type:   assignment
 ---
 
-# Basic plotting with ggplot2
-
 Load the `ggplot2` package:
 
 ```{r solution}
@@ -40,3 +38,4 @@ Let's end with a bit more of a challenge; you'll probably need to consult the `g
 ```{r solution}
 ggplot(diamonds, aes(carat, price, color = cut)) + geom_point(alpha = 0.3)
 ```
+

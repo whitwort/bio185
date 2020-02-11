@@ -22,11 +22,11 @@ What will happen when you enter these commands? Try it out.
 6.7 / 8.9
 ````
 
-No surprises; R can be used as a calculator.  R recognizes the standard syntax for numbers and mathematical operators.  When you've enter a complete [expression][] at the command line and hit "enter", R [evaluates](http://en.wikipedia.org/wiki/Evaluation_strategy) the result of that expression.  If you don't tell R what to do with the result, it will just print out a representation of the value on the next line.
+No surprises; R can be used as a calculator.  R recognizes the standard syntax for numbers and mathematical operators.  When you've enter a complete [expression](https://en.wikipedia.org/wiki/Expression_(computer_science)) at the command line and hit "enter", R [evaluates](http://en.wikipedia.org/wiki/Evaluation_strategy) the result of that expression.  If you don't tell R what to do with the result, it will just print out a representation of the value on the next line.
 
 ## Saving data in variables
 
-Usually you will want to perform a calculation and save the result for later use.  If you've used Excel, you've probably used cells on a worksheet to hold the results of calculations based on the data in other cells.  In R we can save the results of computations in [variables][].  To do this we'll use the assignment operator, which is a little arrow `<-`.
+Usually you will want to perform a calculation and save the result for later use.  If you've used Excel, you've probably used cells on a worksheet to hold the results of calculations based on the data in other cells.  In R we can save the results of computations in [variables](https://en.wikipedia.org/wiki/Variable_(computer_science)).  To do this we'll use the assignment operator, which is a little arrow `<-`.
 
 If you're coming from another programming language and the arrow syntax bugs you, you *can* use `=` operator for general assignment -- see the R help pages for a few important edge cases.
 
@@ -66,15 +66,15 @@ length(c)
 length(1:10)
 ```
 
-Above `length` is the first example we've seen of an R [function][].  In programming, functions are analogous to their mathematical counter parts: they take in one or more values and evaluate to a new value.  The R syntax for running, or "calling", a function is in the form of `functionName(value1, value2, ...)`.  We'll explore functions in more depth throughout the course
+Above `length` is the first example we've seen of an R [function](https://en.wikipedia.org/wiki/Closure_(computer_programming)).  In programming, functions are analogous to their mathematical counter parts: they take in one or more values and evaluate to a new value.  The R syntax for running, or "calling", a function is in the form of `functionName(value1, value2, ...)`.  We'll explore functions in more depth throughout the course
 
 ## Composing vectors
 
 The `length` function has reported that we've been working with vectors of 1 element so far.  To **c**ompose a vector with more than one element, we'll use the `c()` function:
 
 ```{r}
-c(1,2,3,4)
-d <- c(5,6,7,8)
+c(1, 2, 3, 4)
+d <- c(5, 6, 7, 8)
 d + 10
 d + d
 ```
@@ -106,8 +106,6 @@ So far we've only seen numbers for values in vectors (numeric types), but there 
 
 ## Strings
 
-## Strings
-
 We can store text in character vectors (synonymous with strings in other languages).  To create character vectors, surround your text with either double `" ... "` or single `' ... '` quotes:
 
 ```{r}
@@ -116,7 +114,7 @@ We can store text in character vectors (synonymous with strings in other languag
 c( "a", "b", "c", "d" )
 ```
 
-Strings have a number of special codes that denote things like text formatting, all of which start with a slash `\`.  Two other special string characters that you are likely to encounter are tab `\t` and newline `\n`:
+Strings have a number of special codes that denote things like text formatting, all of which start with a backslash `\`.  Two common special string characters that you are likely to encounter are tab `\t` and newline `\n`:
 
 ```{r}
 s <- "a\tb\tc"
@@ -199,7 +197,7 @@ myNumbers[2:4]
 
 ##
 
-In addition to putting integer vectors inside of the index `[...]` we can also use logical vectors.  If we do, `TRUE` at a position causes a value to be extracted, while a `FALSE` indicates that it should be skipped.  Let's look at an example:
+In addition to putting integer vectors inside of the index `[...]` we can also use logical vectors.  If we do, `TRUE` at a position it causes a value to be extracted, while a `FALSE` indicates that it should be skipped.  Let's look at an example:
   
 ```{r}
 myNumbers
@@ -267,7 +265,7 @@ Finally, the indexing `[...]` syntax isn't just used to extract values from data
 myNumbers
 myNumbers[3]    <- 100
 myNumbers
-myNumbers[2:3]  <- c(1,2)
+myNumbers[2:3]  <- c(1, 2)
 myNumbers
 ```
 

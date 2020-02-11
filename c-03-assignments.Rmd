@@ -7,7 +7,7 @@ type:   content
 
 For the first half of the course as you are learning new material, there will be a number of assignments for you to complete on your own after class to help you check to make sure you're following along and keeping up!
 
-I've written an R package that facilitates the submission and grading of assignments for the course; it also provides as much instant feedback to you as it can while your working on the assignments.
+I've written an R package that facilitates the submission and grading of assignments for the course; it also provides as much instant feedback to you as it can while you're working on the assignments.
 
 **Note**:  The course app is a brand new piece of software and there are certainly going to be bugs!  Let me know when you have problems; please save the text of any error messages or warnings you get.  
 
