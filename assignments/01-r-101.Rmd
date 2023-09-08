@@ -1,0 +1,108 @@
+---
+title:  "Review the basics"
+---
+
+# R 101 review
+
+Let's start simple and review the use of variables and doing basic math operations.
+
+Save the number `10` in a variable named `a` and then print its contents:
+
+```{r}
+
+```
+
+Store `2` in the variable `b` and print it:
+
+```{r}
+
+```
+
+Add `a` to `b`:
+
+```{r}
+
+```
+
+Subtract `b` from `a`:
+
+```{r}
+
+```
+
+Multiply `a` and `b`:
+
+```{r}
+
+```
+
+Divide `a` by `b` (surprise, surprise):
+
+```{r}
+
+```
+
+Raise `a` to the power of `b`:
+
+```{r}
+
+```
+
+# Strings
+
+Store the strings "Hello" and "world" in a character vector assigned to the variable `welcome` and then evaluate `welcome`:
+
+```{r}
+
+```
+
+Find the `length` of your `welcome` variable:
+
+```{r}
+
+```
+
+# Practice Indexing
+
+Create a vector holding the numbers `1` through `42` and save it in a variable called `x`. Then print it.
+
+```{r}
+
+```
+
+Extract the numbers in this vector at positions 10 and 20 (in the same operation):
+
+```{r}
+
+```
+
+Extract numbers 10 through 20:
+
+```{r}
+
+```
+
+Create a vector containing the remainder when each number in `x` is divided by 2:
+
+```{r}
+
+```
+
+Create a logical vector which is `TRUE` for even numbers and `FALSE` for odd numbers in `x`:
+
+```{r}
+
+```
+
+Now, put it all together to extract the even numbers from `x`:
+
+```{r}
+
+```
+
+Replace all of the odd numbers in the original `x` vector with the missing value flags (`NA`), then print `x`.
+
+```{r}
+
+```
+
